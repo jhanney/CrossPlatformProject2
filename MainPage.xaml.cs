@@ -20,6 +20,10 @@
             }
         }
 
+        private void Leaderboard_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
