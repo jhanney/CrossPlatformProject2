@@ -15,11 +15,13 @@
                 <!--Start Game Button-->
                 <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24"></Button>
 
-                <HorizontalStackLayout Spacing="20"> <!--Buttons for separate pages -->
+                <HorizontalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center"> <!--Buttons for separate pages -->
                     <Button Text="Leadberboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="18"></Button>
                     <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="18"></Button>
                     <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="18"></Button>
                 </HorizontalStackLayout>
+
+                <Image Source="planet.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="End"></Image>    
                 
                 
 
