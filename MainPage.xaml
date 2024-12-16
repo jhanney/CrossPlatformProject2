@@ -29,7 +29,7 @@
                     </Grid>
                 
 
-                <Image Source="planet.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center"></Image>    
+                <Image x:Name="planetImage" Source="planet.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center"></Image>    
                 
                 
 
