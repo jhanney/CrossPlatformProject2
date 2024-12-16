@@ -27,7 +27,7 @@
                         <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" Padding="5" HorizontalOptions="Fill"></Button>
                         <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" Padding="5" HorizontalOptions="Fill"></Button>
                     </Grid>
-                
+
 
                 <Image x:Name="planetImage" Source="planet.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center"></Image>    
                 
