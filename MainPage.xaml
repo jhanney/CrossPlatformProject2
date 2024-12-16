@@ -9,8 +9,14 @@
         <Image Source="space_stars.jpg" Aspect="Fill"></Image>
 
         <ScrollView>
-            <VerticalStackLayout>
+            <VerticalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+                <!--Create Game Name Label -->
+                <Label Text="Welcome To Trivia Galaxy!!" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                <!--Start Game Button-->
+                <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24"></Button>
                 
+                
+
             </VerticalStackLayout>
            
     </ScrollView>
