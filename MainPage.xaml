@@ -11,21 +11,21 @@
         <ScrollView>
             <VerticalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
                 <!--Create Game Name Label -->
-                <Label Text="Trivia Galaxy" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                <Label Text="Trivia Galaxy" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                 <!--Start Game Button-->
                 <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24"></Button>
 
                 <!--Buttons for separate pages -->
                     <Grid Margin="10,20,10,0" ColumnSpacing="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Button Text="Leadberboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="18" Grid.Column="0"></Button>
-                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="18" Grid.Column="1"></Button>
-                        <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="18" Grid.Column="2"></Button>
+                        <Button Text="Leadberboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16" Grid.Column="0" Padding="5" HorizontalOptions="Fill"></Button>
+                        <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" Padding="5" HorizontalOptions="Fill"></Button>
+                        <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" Padding="5" HorizontalOptions="Fill"></Button>
                     </Grid>
                 
 
