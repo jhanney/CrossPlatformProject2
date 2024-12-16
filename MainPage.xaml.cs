@@ -13,6 +13,7 @@ namespace CrossPlatformProject2
         private void OnGalaxyImageLoaded(object sender, EventArgs e)//only beigin rotation after image is loaded, found thread on error i was getting more info in ReadMe
         {
             planetRotation(); 
+           
         }
 
 
@@ -22,11 +23,11 @@ namespace CrossPlatformProject2
             {
                 while (true)
                 {
-                    await MainThread.InvokeOnMainThreadAsync(async () =>
+                    
                     {
-                         galaxyImage.RelRotateTo(360, 5000, Easing.Linear);
+                         await galaxyImage.RelRotateTo(360, 20000, Easing.Linear);
                          galaxyImage.Rotation = 0; //reset rotation 
-                    });
+                    };
                 }
             }
             catch (Exception ex)
