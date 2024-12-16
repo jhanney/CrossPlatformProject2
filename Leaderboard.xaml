@@ -4,7 +4,14 @@
              x:Class="CrossPlatformProject2.NewPage1"
              Title="Leaderboard"
              BackgroundColor="Black">
-    <VerticalStackLayout>
+    <Grid>
+        <Image Source="starry_night2.png" Aspect="Fill"></Image>
+
+        <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Leaderboard" FontSize="36" TextColor="white" FontAttributes="Bold"></Label>
+
+            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16"></Button>
         
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid> 
 </ContentPage>
