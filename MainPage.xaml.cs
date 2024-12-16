@@ -8,16 +8,25 @@ namespace CrossPlatformProject2
         public MainPage()
         {
             InitializeComponent();
+           
             planetRotation(); 
         }
 
         private async void planetRotation() //method to rorate the planet
         {
-            while (true)//keeps planet constaltly rotating 
+            try
             {
-                await galaxyImage.RotateTo(360, 20000, Easing.Linear); //rotate the image 360 degrees 
-                galaxyImage.Rotation = 0;//restes rotation position to 0
-
+                while (true)
+                {
+                    await galaxyImage.RelRotateTo(360, 20000, Easing.Linear); //try rotation
+                    galaxyImage.Rotation = 0; //reset rotation
+                }
+            }
+            catch (Exception ex)
+            {
+                //log the exception and display a message
+                Console.WriteLine($"Rotation failed: {ex.Message}");
+                await DisplayAlert("Error", "Planet rotation failed. Please restart the app.", "OK");//display image to show rotation not working
             }
         }
 
