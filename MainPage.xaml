@@ -11,17 +11,25 @@
         <ScrollView>
             <VerticalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
                 <!--Create Game Name Label -->
-                <Label Text="Welcome To Trivia Galaxy!!" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                <Label Text="Trivia Galaxy" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
                 <!--Start Game Button-->
                 <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24"></Button>
 
-                <HorizontalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center"> <!--Buttons for separate pages -->
-                    <Button Text="Leadberboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="18"></Button>
-                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="18"></Button>
-                    <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="18"></Button>
-                </HorizontalStackLayout>
+                <!--Buttons for separate pages -->
+                    <Grid Margin="10,20,10,0" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                <Image Source="planet.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="End"></Image>    
+                        <Button Text="Leadberboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="18" Grid.Column="0"></Button>
+                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="18" Grid.Column="1"></Button>
+                        <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="18" Grid.Column="2"></Button>
+                    </Grid>
+                
+
+                <Image Source="planet.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center"></Image>    
                 
                 
 
