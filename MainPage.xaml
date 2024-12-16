@@ -12,7 +12,7 @@
             <VerticalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
                 <!--Create Game Name Label -->
                 <Label Text="Trivia Galaxy" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
-                <Image x:Name="galaxyImage" Source="galaxy.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+                <Image x:Name="galaxyImage" Source="galaxy.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center" Loaded="OnGalaxyImageLoaded"></Image>
                 <!--Start Game Button-->
                 <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24"></Button>
 
