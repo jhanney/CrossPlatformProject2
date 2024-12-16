@@ -12,6 +12,7 @@
             <VerticalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
                 <!--Create Game Name Label -->
                 <Label Text="Trivia Galaxy" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+                <Image x:Name="galaxyImage" Source="galaxy.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center"></Image>
                 <!--Start Game Button-->
                 <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24"></Button>
 
@@ -27,12 +28,8 @@
                         <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" Padding="5" HorizontalOptions="Fill"></Button>
                         <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" Padding="5" HorizontalOptions="Fill"></Button>
                     </Grid>
-
-
-                <Image x:Name="planetImage" Source="planet.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center"></Image>    
                 
-                
-
+               
             </VerticalStackLayout>
            
     </ScrollView>

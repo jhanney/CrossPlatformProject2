@@ -14,8 +14,9 @@
         {
             while (true)//keeps planet constaltly rotating 
             {
-                await planetImage.RelRotateTo(360, 12000, Easing.Linear); //rotate the image 360 degrees
-                planetImage.Rotation = 0;//restes rotation position to 0
+                await galaxyImage.RelRotateTo(360, 20000, Easing.Linear); //rotate the image 360 degrees 
+                galaxyImage.Rotation = 0;//restes rotation position to 0
+
             }
         }
 
