@@ -14,6 +14,12 @@
                 <Label Text="Welcome To Trivia Galaxy!!" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
                 <!--Start Game Button-->
                 <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24"></Button>
+
+                <HorizontalStackLayout Spacing="20"> <!--Buttons for separate pages -->
+                    <Button Text="Leadberboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="18"></Button>
+                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="18"></Button>
+                    <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="18"></Button>
+                </HorizontalStackLayout>
                 
                 
 
