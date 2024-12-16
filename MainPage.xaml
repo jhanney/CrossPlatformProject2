@@ -6,9 +6,12 @@
     
     <!--creating my starry background implementing a grid-->
     <Grid>
+        <Image Source="space_stars.jpg" Aspect="Fill"></Image>
 
         <ScrollView>
-        <VerticalStackLayout
+            <VerticalStackLayout>
+                
+            </VerticalStackLayout>
            
     </ScrollView>
 
