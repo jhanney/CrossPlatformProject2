@@ -24,7 +24,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Button Text="Leadberboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16" Grid.Column="0" Padding="5" HorizontalOptions="Fill" Clicked="Leaderboard_Clicked"></Button>
+                    <Button Text="Leaderboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16" Grid.Column="0" Padding="5" HorizontalOptions="Fill" Clicked="Leaderboard_Clicked" ></Button>
                         <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" Padding="5" HorizontalOptions="Fill"></Button>
                         <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" Padding="5" HorizontalOptions="Fill"></Button>
                     </Grid>

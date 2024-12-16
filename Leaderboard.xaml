@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CrossPlatformProject2.NewPage1"
+             x:Class="CrossPlatformProject2.Leaderboard"
              Title="Leaderboard"
              BackgroundColor="Black">
     <Grid>
@@ -10,8 +10,8 @@
         <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="Leaderboard" FontSize="36" TextColor="white" FontAttributes="Bold"></Label>
 
-            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16"></Button>
+            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked"></Button>
         
-        </VerticalStackLayout>
+        </VerticalStackLayout> 
     </Grid> 
 </ContentPage>

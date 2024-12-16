@@ -1,4 +1,5 @@
-﻿namespace CrossPlatformProject2
+﻿
+namespace CrossPlatformProject2
 {
     public partial class MainPage : ContentPage
     {
@@ -14,15 +15,16 @@
         {
             while (true)//keeps planet constaltly rotating 
             {
-                await galaxyImage.RelRotateTo(360, 20000, Easing.Linear); //rotate the image 360 degrees 
+                await galaxyImage.RotateTo(360, 20000, Easing.Linear); //rotate the image 360 degrees 
                 galaxyImage.Rotation = 0;//restes rotation position to 0
 
             }
         }
 
-        private void Leaderboard_Clicked(object sender, EventArgs e)
+        private async void Leaderboard_Clicked(object sender, EventArgs e) 
         {
-
+            //navigate to leaderboard
+            await Navigation.PushAsync(new Leaderboard());  
         }
     }
 

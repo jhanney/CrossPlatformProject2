@@ -1,9 +1,14 @@
 namespace CrossPlatformProject2;
 
-public partial class NewPage1 : ContentPage
+public partial class Leaderboard : ContentPage
 {
-	public NewPage1()
+	public Leaderboard()
 	{
-		InitializeComponent();
+		InitializeComponent(); 
 	}
+
+    private void homeButton_Clicked(object sender, EventArgs e)//navigate back to home page
+    {
+        Navigation.PopAsync(); 
+    }
 }
