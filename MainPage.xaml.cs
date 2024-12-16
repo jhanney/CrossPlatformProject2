@@ -2,8 +2,10 @@
 namespace CrossPlatformProject2
 {
     public partial class MainPage : ContentPage
+
     {
-        public MainPage()
+        public bool isRotoating = true; //added boolean so galaxy only rotates if true 
+    public MainPage()
         {
             InitializeComponent();
 
@@ -21,7 +23,7 @@ namespace CrossPlatformProject2
         {
             try
             {
-                while (true)
+                while (isRotoating)
                 {
                     
                     {
@@ -43,6 +45,7 @@ namespace CrossPlatformProject2
         private async void Leaderboard_Clicked(object sender, EventArgs e) 
         {
             //navigate to leaderboard
+            isRotoating = false; 
             await Navigation.PushAsync(new Leaderboard());  
         }
     }

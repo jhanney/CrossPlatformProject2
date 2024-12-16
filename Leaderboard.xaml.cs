@@ -8,7 +8,7 @@ public partial class Leaderboard : ContentPage
 	}
 
     private void homeButton_Clicked(object sender, EventArgs e)//navigate back to home page
-    {
+    {     
         Navigation.PopAsync(); 
     }
 }
