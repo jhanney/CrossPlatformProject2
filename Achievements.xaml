@@ -10,8 +10,13 @@
         <!--content of the grid-->
         <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="Achievments" FontSize="36" FontFamily="Oribiton-Bold" HorizontalOptions="Center" TextColor="#FFD700"></Label>
-
-            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" FontFamily="Oribtron-Regular"/>
+            <!--make collection view-->
+            <CollectionView>
+                <CollectionView.ItemTemplate>
+                    
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" FontFamily="Orbitron-Regular"/>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
