@@ -9,46 +9,49 @@
         
         <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
             <!--title of page-->
-            <Label Text="LEADERBOARD" FontSize="36" FontAttributes="Bold" TextColor="Yellow" HorizontalOptions="Center"></Label>
-           
-            <!--adding grid for score table, to improve design-->
-            <Grid ColumnSpacing="10" RowSpacing="5" Padding="10" BackgroundColor="Black"  WidthRequest="400">
-                <!--row definition-->
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    
-                </Grid.RowDefinitions>
-                
-                <!--defining the colums-->
-                <Grid Grid.Row="0" ColumnSpacing="10" RowSpacing="5" Padding="10">
-                    <Grid.ColumnDefinitions>
-                        <!--username-->
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <!--score-->
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+            <Label Text="LEADERBOARD" FontSize="36" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="Center"></Label>
 
-                    <!--labels for the table-->
-                    <Label Text="Player Name" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                    <Label Text="Score" Grid.Column="1" Grid.Row="0" FontSize="16" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                </Grid>
-                <!--display leader boards-->
-                <CollectionView ItemsSource="{Binding Scores}" HeightRequest="300" Grid.Row="1">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
+            <Frame BackgroundColor="#1E1E1E88" BorderColor="#FFD700" CornerRadius="15" >
+
+                <!--adding grid for score table, to improve design-->
+                <Grid ColumnSpacing="10" RowSpacing="5" Padding="10" BackgroundColor="Black"  WidthRequest="400">
+                    <!--row definition-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <!--defining the colums-->
+                    <Grid Grid.Row="0" ColumnSpacing="10" RowSpacing="5" Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <!--username-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!--score-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <!--labels for the table-->
+                        <Label Text="Player Name" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                        <Label Text="Score" Grid.Column="1" Grid.Row="0" FontSize="16" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                    </Grid>
+                    <!--display leader boards-->
+                    <CollectionView ItemsSource="{Binding Scores}" HeightRequest="300" Grid.Row="1">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
                                 <Grid ColumnSpacing="10" RowSpacing="10" Padding="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
                                     <Label Text="{Binding playerName}" FontSize="16" TextColor="White" WidthRequest="150" Grid.Column="0" HorizontalTextAlignment="Center"></Label>
                                     <Label Text="{Binding score}" FontSize="16" TextColor="White" WidthRequest="150" Grid.Column="1" HorizontalTextAlignment="Center" ></Label>
                                 </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid> 
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame> 
             <!--return to home page button -->
             <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked"></Button>
         
