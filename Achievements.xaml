@@ -5,7 +5,11 @@
              Title="Achievements"
              BackgroundColor="Black">
     <Grid>
-        <VerticalStackLayout>
+        <!--background image-->
+        <Image Source="strry_night.png" Aspect="Fill"></Image>
+        <!--content of the grid-->
+        <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Achievments" FontSize="36" FontFamily="Oribiton-Bold" HorizontalOptions="Center" TextColor="#FFD700"></Label>
 
         </VerticalStackLayout>
     </Grid>
