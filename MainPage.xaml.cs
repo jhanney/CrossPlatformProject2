@@ -40,13 +40,20 @@ namespace CrossPlatformProject2
             }
         }
 
-        
+        public void startRotation() //method to start rotation when returning to main page 
+        {
+            if (isRotoating)
+            {
+                isRotoating= true; 
+                planetRotation(); 
+            }
+        }
 
         private async void Leaderboard_Clicked(object sender, EventArgs e) 
         {
             //navigate to leaderboard
             isRotoating = false; 
-            await Navigation.PushAsync(new Leaderboard());  
+            await Navigation.PushAsync(new Leaderboard(this));  //pass references so leaderboard can access methods while navigating to leaderboard
         }
     }
 
