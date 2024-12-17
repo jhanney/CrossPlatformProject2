@@ -10,14 +10,12 @@ namespace CrossPlatformProject2.ViewModels
 
         public LeaderboardViewModel()
         {
-            Scores = new ObservableCollection<ScoreEntry>();
+            Scores = new ObservableCollection<ScoreEntry>
             {
-                //placeholder data
-                new ScoreEntry { playerName = "Josh", score = 100 };
-                new ScoreEntry { playerName = "Trish", score = 90 };
-                new ScoreEntry { playerName = "Joe", score = 80 };
-
-            }
+             new ScoreEntry { playerName = "Josh", score = 100 },
+             new ScoreEntry { playerName = "Trish", score = 90 },
+             new ScoreEntry { playerName = "Joe", score = 80 }
+            };
         }
 
         public class ScoreEntry //class represents data entered for a score 
