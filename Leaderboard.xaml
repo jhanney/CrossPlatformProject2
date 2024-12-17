@@ -53,7 +53,7 @@
                 </Grid>
             </Frame> 
             <!--return to home page button -->
-            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" FontFamily="Oribitron-Regular"></Button>
+            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" FontFamily="Orbitron-Regular"></Button>
         
         </VerticalStackLayout> 
     </Grid> 
