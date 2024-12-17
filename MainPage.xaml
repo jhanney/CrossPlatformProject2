@@ -14,7 +14,7 @@
                 <Label Text="Trivia Galaxy" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" FontFamily="Orbitron-Bold"></Label>
                 <Image x:Name="galaxyImage" Source="galaxy.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center" Loaded="OnGalaxyImageLoaded"></Image>
                 <!--Start Game Button-->
-                <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24"></Button>
+                <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24" FontFamily="Orbitron-Regular"></Button>
 
                 <!--Buttons for separate pages -->
                     <Grid Margin="10,20,10,0" ColumnSpacing="10">
@@ -24,9 +24,9 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                    <Button Text="Leaderboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16" Grid.Column="0" Padding="5" HorizontalOptions="Fill" Clicked="Leaderboard_Clicked" ></Button>
-                        <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" Padding="5" HorizontalOptions="Fill"></Button>
-                        <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" Padding="5" HorizontalOptions="Fill"></Button>
+                    <Button Text="Leaderboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16" Grid.Column="0" Padding="5" HorizontalOptions="Fill" Clicked="Leaderboard_Clicked" FontFamily="Orbitron-Regular"></Button>
+                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" Padding="5" HorizontalOptions="Fill" FontFamily="Orbitron-Regular"></Button>
+                    <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" Padding="5" HorizontalOptions="Fill" FontFamily="Orbitron-Regular"></Button>
                     </Grid>
                 
                
