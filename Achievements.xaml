@@ -12,6 +12,10 @@
             <Label Text="Achievments" FontSize="36" FontFamily="Oribiton-Bold" HorizontalOptions="Center" TextColor="#FFD700"></Label>
             <!--make collection view-->
             <CollectionView>
+                <!--using 1 column-->
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal" Span="1"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     
                 </CollectionView.ItemTemplate>
