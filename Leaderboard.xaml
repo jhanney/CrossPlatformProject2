@@ -6,25 +6,31 @@
              BackgroundColor="Black">
     <Grid>
         <Image Source="starry_night2.png" Aspect="Fill"></Image>
-        <!--adding grid for score table, to improve design-->
-        <Grid>
-
-            <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+        <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="Leaderboard" FontSize="36" TextColor="white" FontAttributes="Bold" ></Label>
-            <!--display leader boards-->
-            <CollectionView ItemsSource="{Binding Scores}" HeightRequest="300">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <HorizontalStackLayout Spacing="20" Padding="10" HorizontalOptions="Center" VerticalOptions="Center">
-                           <Grid>
-                                <Label Text="{Binding playerName}" FontSize="16" TextColor="White" WidthRequest="150"></Label>
-                                <Label Text="{Binding score}" FontSize="16" TextColor="White" WidthRequest="150"></Label>
-                           </Grid>
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
+            <!--adding grid for score table, to improve design-->
+            <Grid ColumnSpacing="10" RowSpacing="5" Padding="10" BackgroundColor="#00000040" HorizontalOptions="Center" WidthRequest="400">
+                <!--defining the colums-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <!--display leader boards-->
+                <CollectionView ItemsSource="{Binding Scores}" HeightRequest="300">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <HorizontalStackLayout Spacing="20" Padding="10" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Grid ColumnSpacing="10">
+                                    <Label Text="{Binding playerName}" FontSize="16" TextColor="White" WidthRequest="150" Grid.Column="0" VerticalOptions="Center"></Label>
+                                    <Label Text="{Binding score}" FontSize="16" TextColor="White" WidthRequest="150" Grid.Column="1" VerticalOptions="Center"></Label>
+                                </Grid>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid> 
             <!--return to home page button -->
             <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked"></Button>
         
