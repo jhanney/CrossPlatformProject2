@@ -11,10 +11,10 @@
             <!--title of page-->
             <Label Text="LEADERBOARD" FontSize="36" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="Center"></Label>
 
-            <Frame BackgroundColor="#1E1E1E88" BorderColor="#FFD700" CornerRadius="15" >
+            <Frame BackgroundColor="Black" BorderColor="#FFD700" CornerRadius="15" WidthRequest="400">
 
                 <!--adding grid for score table, to improve design-->
-                <Grid ColumnSpacing="10" RowSpacing="5" Padding="10" BackgroundColor="Black"  WidthRequest="400">
+                <Grid ColumnSpacing="10" RowSpacing="5" Padding="10" BackgroundColor="Transparent"  WidthRequest="400" >
                     <!--row definition-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
