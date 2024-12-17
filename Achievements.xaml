@@ -11,6 +11,7 @@
         <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="Achievments" FontSize="36" FontFamily="Oribiton-Bold" HorizontalOptions="Center" TextColor="#FFD700"></Label>
 
+            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
