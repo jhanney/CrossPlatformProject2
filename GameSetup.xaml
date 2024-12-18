@@ -22,6 +22,7 @@
             <StackLayout Grid.Row="1" Spacing="10">
                 <Label Text="Select Number of players:" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White"></Label>
                 <Picker x:Name="playerPicker" Title="Choose Players" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
+                <Picker x:Name="difficultyPicker" Title="Choose Dificulty" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
             </StackLayout>
 
         </Grid>
