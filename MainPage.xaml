@@ -14,7 +14,7 @@
                 <Label Text="Trivia Galaxy" FontSize="36" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" FontFamily="Orbitron-Bold"></Label>
                 <Image x:Name="galaxyImage" Source="galaxy.png" Aspect="AspectFit" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center" Loaded="OnGalaxyImageLoaded"></Image>
                 <!--Start Game Button-->
-                <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24" FontFamily="Orbitron-Regular"></Button>
+                <Button Text="Start Your Journey" BackgroundColor="#1E90FF" TextColor="White" FontSize="24" FontFamily="Orbitron-Regular" Clicked="Button_Clicked"></Button>
 
                 <!--Buttons for separate pages -->
                     <Grid Margin="10,20,10,0" ColumnSpacing="10">
