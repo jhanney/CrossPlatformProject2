@@ -64,6 +64,7 @@ namespace CrossPlatformProject2
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            isRotoating = false;
             await Navigation.PushAsync(new GameSetup());
         }
     }

@@ -7,6 +7,7 @@
     <Grid>
         <!--background image-->
         <Image Source="galaxy.png" Aspect="Fill" Opacity="0.5"></Image>
+        <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold"></Label>
         <!--main content-->
         <Grid ColumnSpacing="0" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
             <!--define rows-->
@@ -17,7 +18,6 @@
                 <RowDefinition Height="Auto"></RowDefinition><!--start game-->
                 <RowDefinition Height="Auto"></RowDefinition><!--return home-->
             </Grid.RowDefinitions>
-            <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold"></Label>
             <!--num players picker-->
             <StackLayout Grid.Row="1" Spacing="10">
                 <Label Text="Select Number of players:" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White"></Label>
@@ -29,7 +29,7 @@
                 <Picker x:Name="difficultyPicker" Title="Choose Dificulty" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
             </StackLayout>
             <!--player name entry-->
-            <StackLayout x:Name="playerNameEntries" Spacing="10">
+            <StackLayout x:Name="playerNameEntries" Spacing="10" Grid.Row="3">
                 
             </StackLayout>
             <!--start game button-->
