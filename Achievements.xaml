@@ -31,7 +31,9 @@
                                 <Image Source="{Binding TrophyImage}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"></Image>
                                 <!--vertical layout for achievment and description-->
                                 <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
-                                    
+                                    <!--label for title-->
+                                    <Label Text="{Binding Title}" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White" HorizontalTextAlignment="Start"></Label>
+                                    <Label Text="{Binding Description}" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White" HorizontalTextAlignment="Start"></Label>
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
