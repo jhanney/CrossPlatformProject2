@@ -11,5 +11,11 @@ public partial class GameSetup : ContentPage
         playerPicker.Items.Add("3 Player");
         playerPicker.Items.Add("4 Player");
 
+        //add difficulty options
+        difficultyPicker.Items.Add("Easy");
+        difficultyPicker.Items.Add("Medium");
+        difficultyPicker.Items.Add("Hard");
     }
+
+    
 }
