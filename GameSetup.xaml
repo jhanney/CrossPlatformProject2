@@ -8,9 +8,21 @@
         <!--background image-->
         <Image Source="galaxy.png" Aspect="Fill" Opacity="0.5"></Image>
         <!--main content-->
-        <GridSpacing="30" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid ColumnSpacing="0" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <!--define rows-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition><!--title-->
+                <RowDefinition Height="Auto"></RowDefinition><!--player picker-->
+                <RowDefinition Height="Auto"></RowDefinition><!--difficulty picker-->
+                <RowDefinition Height="Auto"></RowDefinition><!--start game-->
+                <RowDefinition Height="Auto"></RowDefinition><!--return home-->
+            </Grid.RowDefinitions>
             <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold"></Label>
+            <!--num players picker-->
+            <StackLayout>
+                
+            </StackLayout>
 
-        </GridSpacing>
+        </Grid>
     </Grid>
 </ContentPage>
