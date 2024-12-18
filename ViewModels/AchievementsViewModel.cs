@@ -13,7 +13,7 @@ namespace CrossPlatformProject2.ViewModels
             //adding placeholder achievments 
             Achievements = new ObservableCollection<Achievment>
             {
-                new Achievment { Title = "First Win", Description = "Win Your First Trivia Galaxy Game!!", IsUnlocked = true },
+                new Achievment { Title = "First Win", Description = "Win Your First Trivia Galaxy Game!!", IsUnlocked = false },
                 new Achievment { Title = "Space Cadet", Description = "Answer 5 questions correctly", IsUnlocked = false },
                 new Achievment { Title = "Space Ranger", Description = "Answer 10 questions correctly", IsUnlocked = false }
             };
