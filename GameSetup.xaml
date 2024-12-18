@@ -17,6 +17,7 @@
                 <RowDefinition Height="Auto"></RowDefinition><!--difficulty picker-->
                 <RowDefinition Height="Auto"></RowDefinition><!--start game-->
                 <RowDefinition Height="Auto"></RowDefinition><!--return home-->
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <!--num players picker-->
             <StackLayout Grid.Row="1" Spacing="10">
