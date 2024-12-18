@@ -19,7 +19,9 @@
             </Grid.RowDefinitions>
             <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold"></Label>
             <!--num players picker-->
-            <StackLayout>
+            <StackLayout Grid.Row="1" Spacing="10">
+                <Label Text="Select Number of players:" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White"></Label>
+                <Picker x:Name="playerPicker" Title="Choose Players" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
                 
             </StackLayout>
 
