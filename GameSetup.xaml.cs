@@ -2,6 +2,7 @@ namespace CrossPlatformProject2;
 
 public partial class GameSetup : ContentPage
 {
+    private List<Entry> playerNameEntriesList = new List<Entry>();//list to store player names
 	public GameSetup()
 	{
 		InitializeComponent();
@@ -45,6 +46,9 @@ public partial class GameSetup : ContentPage
 
     private void OnPlayerCountChanged(object sender, EventArgs e)
     {
+        //clear prvious player names entered
+        playerNameEntries.Clear();
+        playerNameEntriesList.Clear();
     }
 
     private async void homeButton_Clicked(object sender, EventArgs e)
