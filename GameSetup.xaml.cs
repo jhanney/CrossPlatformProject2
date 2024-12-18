@@ -49,6 +49,28 @@ public partial class GameSetup : ContentPage
         //clear prvious player names entered
         playerNameEntries.Clear();
         playerNameEntriesList.Clear();
+
+        if(playerPicker.SelectedIndex < 0)
+        {
+            return;
+        }
+        //calculate number of players
+        int numberOfPlayers = playerPicker.SelectedIndex + 1;
+
+        //for loop to add player names entries based on selection
+        for (int i = 1; i < numberOfPlayers; i++)
+        {
+            var entry = new Entry
+            {
+                Placeholder = "Enter player {i} Name",
+                BackgroundColor = Colors.White,
+                TextColor = Colors.Black,
+                FontSize = 16,
+            };
+            //add player entry
+            playerNameEntriesList.Add(entry);
+            playerNameEntries.Children.Add(entry);
+        }   
     }
 
     private async void homeButton_Clicked(object sender, EventArgs e)
