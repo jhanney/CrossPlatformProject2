@@ -19,7 +19,12 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="#FFD700" CornerRadius="15" Padding="5">
-                            <Grid>
+                            <!--grid for trophy and achievment-->
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
                                 
                             </Grid>
                         </Frame>
