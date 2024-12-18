@@ -6,7 +6,7 @@ public partial class Achievements : ContentPage
     private MainPage mainPage;//acces methods in mainpage
     public Achievements(MainPage mainPage)
     {
-        InitializeComponent();
+        InitializeComponent(); 
         this.mainPage = mainPage; //assign to mainpage
         BindingContext = new AchievementsViewModel();//add binding context for achievments viewmodel
     }
