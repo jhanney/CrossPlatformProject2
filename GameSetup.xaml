@@ -8,9 +8,11 @@
         <!--background image-->
         <Image Source="galaxy.png" Aspect="Fill" Opacity="0.5"></Image>
         <!--main content-->
-        <VerticalStackLayout Spacing="30" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid>
+            <VerticalStackLayout Spacing="30" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold"></Label>
 
-        </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
     </Grid>
 </ContentPage>
