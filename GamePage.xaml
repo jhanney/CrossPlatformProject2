@@ -5,6 +5,8 @@
              Title="GamePage"
              BackgroundColor="Black">
     <Grid>
+        <!--background image-->
+        <Image Source="gamepagebackground.png" Aspect="Fill" Opacity="0.5"></Image>
         <VerticalStackLayout>
 
         </VerticalStackLayout>
