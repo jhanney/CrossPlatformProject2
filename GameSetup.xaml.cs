@@ -17,13 +17,18 @@ public partial class GameSetup : ContentPage
         difficultyPicker.Items.Add("Hard");
     }
 
-    private void OnStartButtonClicked_Clicked(object sender, EventArgs e)
+    private async void OnStartButtonClicked_Clicked(object sender, EventArgs e)
     {
-
+        if (playerPicker.SelectedItem != null)//method to validate player picker selection
+        {
+            //display alert
+            await DisplayAlert("Error", "Please select the number of players.", "OK");
+            return; 
+        }
     }
 
-    private void homeButton_Clicked(object sender, EventArgs e)
+    private async void homeButton_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PopAsync();
     }
 }
