@@ -9,7 +9,7 @@
         <Image Source="starry_night.jpg" Aspect="Fill"></Image>
         <!--content of the grid-->
         <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="Achievments" FontSize="36" FontFamily="Oribiton-Bold" HorizontalOptions="Center" TextColor="#FFD700"></Label>
+            <Label Text="Achievments" FontSize="36" FontFamily="Orbitron-Bold" HorizontalOptions="Center" TextColor="#FFD700"></Label>
             <!--make collection view-->
             <CollectionView ItemsSource="{Binding Achievements}" WidthRequest="350" HeightRequest="500">
                 <!--using 1 column-->
