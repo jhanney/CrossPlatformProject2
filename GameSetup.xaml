@@ -9,7 +9,6 @@
         <Image Source="galaxy.png" Aspect="Fill" Opacity="0.5"></Image>
         <!--main content-->
         <Grid ColumnSpacing="0" Padding="20" RowSpacing="15" HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold" HorizontalOptions="Center" VerticalOptions="Start" Grid.Row="0"></Label>
             <!--define rows-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition><!--title-->
@@ -19,6 +18,7 @@
                 <RowDefinition Height="Auto"></RowDefinition><!--return home-->
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
+            <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold" HorizontalOptions="Center" VerticalOptions="Start" Grid.Row="0"></Label>
             <!--num players picker-->
             <StackLayout Grid.Row="1" Spacing="10">
                 <!--<Label Text="Select Number of players:" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White"></Label>-->
