@@ -43,6 +43,10 @@ public partial class GameSetup : ContentPage
 
     }
 
+    private void OnPlayerCountChanged(object sender, EventArgs e)
+    {
+    }
+
     private async void homeButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
