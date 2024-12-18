@@ -9,7 +9,7 @@
         <Image Source="galaxy.png" Aspect="Fill" Opacity="0.5"></Image>
         <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold" HorizontalOptions="Center" VerticalOptions="Start"></Label>
         <!--main content-->
-        <Grid ColumnSpacing="0" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid ColumnSpacing="0" Padding="20" RowSpacing="15" HorizontalOptions="Center" VerticalOptions="Center">
             <!--define rows-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition><!--title-->

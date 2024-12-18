@@ -33,11 +33,11 @@ public partial class GameSetup : ContentPage
         int numberOfPlayers = playerPicker.SelectedIndex + 1;
 
         //for loop to add player names entries based on selection
-        for (int i = 1; i < numberOfPlayers; i++)
+        for (int i = 1; i <= numberOfPlayers; i++)
         {
             var entry = new Entry
             {
-                Placeholder = "Enter player {i} Name",
+                Placeholder = $"Enter player {i} Name",
                 BackgroundColor = Colors.White,
                 TextColor = Colors.Black,
                 FontSize = 16,
