@@ -22,8 +22,14 @@
             <StackLayout Grid.Row="1" Spacing="10">
                 <Label Text="Select Number of players:" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White"></Label>
                 <Picker x:Name="playerPicker" Title="Choose Players" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
-                <Picker x:Name="difficultyPicker" Title="Choose Dificulty" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker> 
             </StackLayout>
+            <!--difficulty picker-->
+            <StackLayout Grid.Column="2" Spacing="10">
+                <Label Text="Select Difficulty" FontSize="16" FontFamily="Orbitron-Regular" TextColor="white"></Label>
+                <Picker x:Name="difficultyPicker" Title="Choose Dificulty" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
+            </StackLayout>
+            <!--start game button-->
+            <Button Text="Start Game" BackgroundColor="Gold" FontSize="16" FontFamily="Orbitron-Regular" HorizontalOptions="Center" WidthRequest="200" Clicked="OnStartButtonClicked_Clicked"></Button>
 
         </Grid>
     </Grid>

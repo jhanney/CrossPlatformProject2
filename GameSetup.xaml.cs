@@ -17,5 +17,8 @@ public partial class GameSetup : ContentPage
         difficultyPicker.Items.Add("Hard");
     }
 
-    
+    private void OnStartButtonClicked_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
