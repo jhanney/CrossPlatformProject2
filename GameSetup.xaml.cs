@@ -25,6 +25,22 @@ public partial class GameSetup : ContentPage
             await DisplayAlert("Error", "Please select the number of players.", "OK");
             return; 
         }
+
+        if (difficultyPicker.SelectedItem != null)//method to check if difficulty selected
+        {
+
+            //display alert
+            await DisplayAlert("Error", "Please select the difficulty.", "OK");
+            return;
+        }
+        //conver items to strings, will be used in game session
+        string selectedPlayers = playerPicker.SelectedItem.ToString(); 
+        string selectedDifficulty = difficultyPicker.SelectedItem.ToString();
+
+
+        //push these values to the game page for use
+        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty));
+
     }
 
     private async void homeButton_Clicked(object sender, EventArgs e)
