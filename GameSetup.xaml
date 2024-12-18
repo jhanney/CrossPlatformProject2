@@ -5,8 +5,11 @@
              Title="GameSetup"
              BackgroundColor="Black">
     <Grid>
+        <!--background image-->
         <Image Source="galaxy.png" Aspect="Fill" Opacity="0.5"></Image>
-        <VerticalStackLayout>
+        <!--main content-->
+        <VerticalStackLayout Spacing="30" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold"></Label>
 
         </VerticalStackLayout>
     </Grid>
