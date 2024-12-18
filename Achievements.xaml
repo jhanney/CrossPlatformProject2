@@ -18,7 +18,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame>
+                        <Frame BorderColor="#FFD700" CornerRadius="15" Padding="5">
                             <Grid>
                                 
                             </Grid>
