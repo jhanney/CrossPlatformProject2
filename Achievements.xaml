@@ -28,10 +28,11 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <!--trophy image-->
-                                <Image Source="{Binding TrophyImage}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0">
+                                <Image Source="{Binding TrophyImage}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"></Image>
+                                <!--vertical layout for achievment and description-->
+                                <VerticalStackLayout>
                                     
-                                </Image>
-                                
+                                </VerticalStackLayout>
                             </Grid>
                         </Frame>
                     </DataTemplate>
