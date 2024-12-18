@@ -24,5 +24,8 @@ namespace CrossPlatformProject2.ViewModels
         public string Title { get; set; } //title of the achievement
         public string Description { get; set; }//achievment description
         public bool IsUnlocked { get; set; }//whther its been completed
+
+        //determins which trophy image to show
+        public string TrophyImage => IsUnlocked ? "trophy.png" : "lock.png"; 
     }
 }

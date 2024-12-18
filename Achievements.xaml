@@ -22,9 +22,13 @@
                             <!--grid for trophy and achievment-->
                             <Grid ColumnSpacing="10">
                                 <Grid.ColumnDefinitions>
+                                    <!--trophy image column-->
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <!--text column-->
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
+                                <!--trophy image-->
+                                <Image></Image>
                                 
                             </Grid>
                         </Frame>
