@@ -5,6 +5,7 @@
              Title="GameSetup"
              BackgroundColor="Black">
     <Grid>
+        <Image Source="galaxy.png" Aspect="Fill" Opacity="0.5"></Image>
         <VerticalStackLayout>
 
         </VerticalStackLayout>
