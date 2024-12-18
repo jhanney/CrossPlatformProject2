@@ -14,11 +14,11 @@
             <CollectionView ItemsSource="{Binding Achievements}" WidthRequest="350" HeightRequest="500">
                 <!--using 1 column-->
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Horizontal" Span="1"></GridItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="#FFD700" CornerRadius="15" Padding="5">
+                        <Frame BorderColor="#FFD700" BackgroundColor="Black" CornerRadius="15" Padding="5">
                             <!--grid for trophy and achievment-->
                             <Grid ColumnSpacing="10">
                                 <Grid.ColumnDefinitions>
