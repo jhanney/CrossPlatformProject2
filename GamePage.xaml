@@ -9,6 +9,10 @@
         <Image Source="gamepagebackground.png" Aspect="Fill" Opacity="0.5"></Image>
         <!--main content of game page-->
         <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <!--track score-->
+            <HorizontalStackLayout>
+                
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </Grid>
