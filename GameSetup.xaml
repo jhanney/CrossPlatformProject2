@@ -7,7 +7,7 @@
     <Grid>
         <!--background image-->
         <Image Source="galaxy.png" Aspect="Fill" Opacity="0.5"></Image>
-        <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold" HorizontalOptions="Center"></Label>
+        <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold" HorizontalOptions="Center" VerticalOptions="Start"></Label>
         <!--main content-->
         <Grid ColumnSpacing="0" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
             <!--define rows-->
@@ -19,22 +19,22 @@
                 <RowDefinition Height="Auto"></RowDefinition><!--return home-->
             </Grid.RowDefinitions>
             <!--num players picker-->
-            <StackLayout Grid.Row="1" Spacing="10">
+            <StackLayout Grid.Row="0" Spacing="10">
                 <!--<Label Text="Select Number of players:" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White"></Label>-->
-                <Picker x:Name="playerPicker" Title="Choose Players" TitleColor="white" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
+                <Picker x:Name="playerPicker" Title="Choose Players" TitleColor="white" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular" SelectedIndexChanged="OnPlayerCountChanged"></Picker>
             </StackLayout>
             <!--difficulty picker-->
-            <StackLayout Grid.Row="2" Spacing="10">
+            <StackLayout Grid.Row="1" Spacing="10">
                 <!-- <Label Text="Select Difficulty" FontSize="16" FontFamily="Orbitron-Regular" TextColor="white"></Label>-->
                 <Picker x:Name="difficultyPicker" Title="Choose Dificulty" TitleColor="White" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
             </StackLayout>
             <!--player name entry-->
-            <StackLayout x:Name="playerNameEntries" Spacing="10" Grid.Row="3">
+            <StackLayout x:Name="playerNameEntries" Spacing="10" Grid.Row="2">
                 
             </StackLayout>
             <!--start game button-->
-            <Button Text="Start Game" BackgroundColor="Gold" FontSize="16" FontFamily="Orbitron-Regular" HorizontalOptions="Center" WidthRequest="200" Clicked="OnStartButtonClicked_Clicked" Grid.Row="4"></Button>
-            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" FontFamily="Orbitron-Regular" Grid.Row="5"></Button>
+            <Button Text="Start Game" BackgroundColor="Gold" FontSize="16" FontFamily="Orbitron-Regular" HorizontalOptions="Center" WidthRequest="200" Clicked="OnStartButtonClicked_Clicked" Grid.Row="3"></Button>
+            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" FontFamily="Orbitron-Regular" Grid.Row="4"></Button>
 
 
         </Grid>
