@@ -29,7 +29,9 @@
                 <Picker x:Name="difficultyPicker" Title="Choose Dificulty" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
             </StackLayout>
             <!--start game button-->
-            <Button Text="Start Game" BackgroundColor="Gold" FontSize="16" FontFamily="Orbitron-Regular" HorizontalOptions="Center" WidthRequest="200" Clicked="OnStartButtonClicked_Clicked"></Button>
+            <Button Text="Start Game" BackgroundColor="Gold" FontSize="16" FontFamily="Orbitron-Regular" HorizontalOptions="Center" WidthRequest="200" Clicked="OnStartButtonClicked_Clicked" Grid.Row="3"></Button>
+            <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" FontFamily="Orbitron-Regular" Grid.Row="4"></Button>
+
 
         </Grid>
     </Grid>

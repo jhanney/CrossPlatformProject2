@@ -21,4 +21,9 @@ public partial class GameSetup : ContentPage
     {
 
     }
+
+    private void homeButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
