@@ -13,7 +13,14 @@
             <Label x:Name="questionLabel" Text="Question Will Appear Here" FontSize="24" TextColor="White" FontFamily="Orbitron-Bold" HorizontalOptions="Center"></Label>
             <!--answer buttons-->
             <Grid ColumnSpacing="10" RowSpacing="10" Padding="10">
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
             </Grid>
         </VerticalStackLayout>
     </Grid>
