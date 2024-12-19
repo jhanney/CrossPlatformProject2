@@ -50,14 +50,14 @@ public partial class GameSetup : ContentPage
 
     private async void OnStartButtonClicked_Clicked(object sender, EventArgs e)
     {
-        if (playerPicker.SelectedItem != null)//method to validate player picker selection
+        if (playerPicker.SelectedItem == null)//method to validate player picker selection
         {
             //display alert
             await DisplayAlert("Error", "Please select the number of players.", "OK");
             return; 
         }
 
-        if (difficultyPicker.SelectedItem != null)//method to check if difficulty selected
+        if (difficultyPicker.SelectedItem == null)//method to check if difficulty selected
         {
 
             //display alert
@@ -85,7 +85,7 @@ public partial class GameSetup : ContentPage
 
 
         //push these values to the game page for use
-        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty));
+        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, playerNames));
 
     }
   
