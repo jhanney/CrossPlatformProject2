@@ -2,6 +2,7 @@ namespace CrossPlatformProject2;
 
 public partial class GamePage : ContentPage
 {
+    private int score;
 
     private string selectedPlayers { get; set; }//selected player
     private string selectedDifficulty { get; set; }//difficulty
@@ -20,6 +21,19 @@ public partial class GamePage : ContentPage
 
     private void OnAnswerClicked(object sender, EventArgs e)
     {
+        //idnetify which button was clickedd
+        Button clickedButton = sender as Button;//sender is the button that was clicked
+        //cast sender to button, to access its properties
+
+        //check if answer is correct
+        //compare button text to correct answer, placeholder for now 
+        if (clickedButton.Text == "Corredt Answer") 
+        {
+            //increment score
+            score++;
+            //update the score UI
+            
+        }
 
     }
 }
