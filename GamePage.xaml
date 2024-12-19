@@ -10,8 +10,11 @@
         <!--main content of game page-->
         <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
            <!--label for question-->
-            <Label></Label>
-
+            <Label x:Name="questionLabel" Text="Question Will Appear Here" FontSize="24" TextColor="White" FontFamily="Orbitron-Bold" HorizontalOptions="Center"></Label>
+            <!--answer buttons-->
+            <Grid ColumnSpacing="10" RowSpacing="10" Padding="10">
+                
+            </Grid>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
