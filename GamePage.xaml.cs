@@ -16,10 +16,9 @@ public partial class GamePage : ContentPage
         this.selectedDifficulty = selectedDifficulty;
         this.playerNames = playerNames;
 
-       
-}
 
-    private void Button_Clicked(object sender, EventArgs e)
-    {
+
+
 
     }
+}

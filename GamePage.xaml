@@ -22,10 +22,10 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <!--buttons-->
-                <Button Text="Answer 1" BackgroundColor="Grey" TextColor="White" Clicked="Button_Clicked" Grid.Row="0" Grid.Column="0"></Button>
-                <Button Text="Answer 2" BackgroundColor="Grey" TextColor="White" Clicked="Button_Clicked" Grid.Row="0" Grid.Column="1"></Button>
-                <Button Text="Answer 3" BackgroundColor="Grey" TextColor="White" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="0"></Button>
-                <Button Text="Answer 4" BackgroundColor="Grey" TextColor="White" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="1"></Button>
+                <Button Text="Answer 1" BackgroundColor="Grey" TextColor="White"  Grid.Row="0" Grid.Column="0"></Button>
+                <Button Text="Answer 2" BackgroundColor="Grey" TextColor="White" Grid.Row="0" Grid.Column="1"></Button>
+                <Button Text="Answer 3" BackgroundColor="Grey" TextColor="White"  Grid.Row="1" Grid.Column="0"></Button>
+                <Button Text="Answer 4" BackgroundColor="Grey" TextColor="White" Grid.Row="1" Grid.Column="1"></Button>
             </Grid>
             <!--display the scores-->
             <HorizontalStackLayout>
