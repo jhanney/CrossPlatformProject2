@@ -29,7 +29,7 @@
             </Grid>
             <!--display the scores-->
             <HorizontalStackLayout>
-                
+                <Label></Label>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>
