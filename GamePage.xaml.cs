@@ -81,6 +81,12 @@ public partial class GamePage : ContentPage
             var question = triviaQuestions[currentQuestionIndex];//retireve question object from the list
 
             questionLabel.Text = question.Question;//update UI
+
+            //make a list with correct and incorrect answers
+            var answers = question.IncorrectAnswers
+                .Concat(new[] { question.CorrectAnswer })//add correct answer
+                .OrderBy(_ => Guid.NewGuid())//shuffle answers
+                .ToList();//add result to list
         }
     }
 
