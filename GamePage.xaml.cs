@@ -94,6 +94,15 @@ public partial class GamePage : ContentPage
             answerButton3.Text = answers[2];
             answerButton4.Text = answers[3];
         }
+        else
+        {
+            endGame(); 
+        }
+    }
+
+    private void endGame()
+    {
+        throw new NotImplementedException();
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)

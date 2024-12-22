@@ -17,14 +17,13 @@ public partial class GameSetup : ContentPage
         difficultyPicker.Items.Add("Medium");
         difficultyPicker.Items.Add("Hard");
 
-        //placeholder category options
-        categoryPicker.Items.Add("General Knowledge");
-        categoryPicker.Items.Add("Science");
-        categoryPicker.Items.Add("History");
-        categoryPicker.Items.Add("Sports");
-        categoryPicker.Items.Add("Movies");
+        LoadCategories();//method to load categories from API
     }
 
+    private async void LoadCategories()
+    {
+        
+    }
 
     private void OnPlayerCountChanged(object sender, EventArgs e)
     {
