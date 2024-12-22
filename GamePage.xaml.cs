@@ -111,6 +111,13 @@ public partial class GamePage : ContentPage
         Button clickedButton = sender as Button;//sender is the button that was clicked
         //cast sender to button, to access its properties
 
+        if (clickedButton == null)
+        {
+            return;
+        }
+
+        var currentQuestion = triviaQuestions[currentQuestionIndex];//retireve current index of question and question
+
         //check if answer is correct
         //compare button text to correct answer, placeholder for now 
         if (clickedButton.Text == "Correct Answer") 
