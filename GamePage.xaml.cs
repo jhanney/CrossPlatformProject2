@@ -87,6 +87,12 @@ public partial class GamePage : ContentPage
                 .Concat(new[] { question.CorrectAnswer })//add correct answer
                 .OrderBy(_ => Guid.NewGuid())//shuffle answers
                 .ToList();//add result to list
+
+            //display shuffled answers on the buttons
+            answerButton1.Text = answers[0]; 
+            answerButton2.Text = answers[1]; 
+            answerButton3.Text = answers[2];
+            answerButton4.Text = answers[3];
         }
     }
 
