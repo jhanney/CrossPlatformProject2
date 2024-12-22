@@ -132,8 +132,16 @@ public partial class GamePage : ContentPage
             //display for incorret answer
             DisplayAlert("Wrong!!", "Better luck next time", "Ok");
         }
+            currentQuestionIndex++; //increment index of question
+            currentPlayerIndex = (currentPlayerIndex + 1) % playerNames.Count;//move to next player in the list
+
+        if (currentQuestionIndex < triviaQuestions.Count) 
+            DisplayQuestion();
+        else
+            endGame();
+
         //place holder text for next question
-        questionLabel.Text = "Next question goes here.";
+        //questionLabel.Text = "Next question goes here.";
     }
 
     private void OnSaveGameClicked(object sender, EventArgs e)
