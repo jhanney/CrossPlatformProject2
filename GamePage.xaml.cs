@@ -11,6 +11,13 @@ public partial class GamePage : ContentPage
 
     private List<string> playerNames { get; set; }//stores player names
 
+    private const string ApiUrlTemplate = "https://opentdb.com/api.php?amount=10&category={category}&difficulty={difficulty}"; //api url
+
+    private int currentPlayerIndex = 0;// keep track of current player
+
+    private Dictionary<string, int> playerScores = new();//track the players scores 
+
+
     public GamePage(string selectedPlayers, string selectedDifficulty, string selectedCategory, List<string> playerNames)
     {
         InitializeComponent();
@@ -20,13 +27,28 @@ public partial class GamePage : ContentPage
         this.playerNames = playerNames;
         this.selectedCategory = selectedCategory;
 
-        LoadQuestionsFromApi(selectedCategory, selectedDifficulty);//load the questions dynamically from API
+        foreach (var player in playerNames)//start player scores at 0
+        {
+            playerScores[player] = 0;
+        }
+
+        string apiUrl = ApiUrlTemplate
+            .Replace("{category}", selectedCategory)
+            .Replace("{difficulty}", selectedDifficulty);
+       
+        LoadQuestionsFromApi(apiUrl);
 
     }
     private List<QuestionModel> questions = new List<QuestionModel>(); //list to hold question list
-    private void LoadQuestionsFromApi(string selectedCategory, string selectedDifficulty)
+    private int currentQuestionIndex = 0; //keep track of question
+    private void LoadQuestionsFromApi(string apiUrl)
     {
-        throw new NotImplementedException();
+       
+
+        using HttpClient client = new HttpClient();
+
+        // Make an asynchronous GET request to the API
+        var response = await client.GetAsync(apiUrl); 
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
