@@ -12,7 +12,7 @@ public partial class GamePage : ContentPage
 
     private List<string> playerNames { get; set; }//stores player names
 
-    private const string apiURL = "https://opentdb.com/api.php?amount=10&category={category}&difficulty={difficulty}"; //api url 
+    private const string apiURL = "https://opentdb.com/api.php?amount=10"; //api url 
 
     private int currentPlayerIndex = 0;// keep track of current player
 
