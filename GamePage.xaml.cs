@@ -41,29 +41,36 @@ public partial class GamePage : ContentPage
     private int currentQuestionIndex = 0; //keep track of question
     private async void LoadQuestionsFromApi(string selectedCategory, string selectedDifficulty)
     {
-       
-
-        using HttpClient client = new HttpClient();
-        var response = await client.GetStringAsync(apiURL);
-
-        //async request to get from api
-        var root = JsonConvert.DeserializeObject<Root>(response);
-
-        if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
+        try
         {
-            triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
+
+            using HttpClient client = new HttpClient();
+            var response = await client.GetStringAsync(apiURL);
+
+            //async request to get from api
+            var root = JsonConvert.DeserializeObject<Root>(response);
+
+            if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
             {
-                Question = result.question,
-                CorrectAnswer = result.correct_answer,
-                IncorrectAnswers = result.incorrect_answers
-            }).ToList();
+                triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
+                {
+                    Question = result.question,
+                    CorrectAnswer = result.correct_answer,
+                    IncorrectAnswers = result.incorrect_answers
+                }).ToList();
 
-            //DisplayQuestion();
+                //DisplayQuestion();
+            }
+            else //display in case of error
+            {
+                await DisplayAlert("Error", "No questions available for the selected options.", "OK");
+            }
         }
-        else //display in case of error
+        catch (Exception ex) 
         {
-            await DisplayAlert("Error", "No questions available for the selected options.", "OK");
+            await DisplayAlert("Error", $"Failed to load questions: {ex.Message}", "OK");
         }
+
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
