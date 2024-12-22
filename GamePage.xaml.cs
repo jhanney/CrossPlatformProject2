@@ -34,6 +34,12 @@ public partial class GamePage : ContentPage
             //update the score UI
             
         }
-
+        else
+        {
+            //display for incorret answer
+            DisplayAlert("Wrong!!", "Better luck next time", "Ok");
+        }
+        //place holder text for next question
+        questionLabel.Text = "Next question goes here.";
     }
 }
