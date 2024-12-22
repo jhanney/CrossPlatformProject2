@@ -46,7 +46,12 @@ public partial class GamePage : ContentPage
         var response = await client.GetStringAsync(apiURL);
 
         //async request to get from api
-        var root = JsonConvert.DeserializeObject<Root>(response); 
+        var root = JsonConvert.DeserializeObject<Root>(response);
+
+        if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
+        {
+
+        }
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
