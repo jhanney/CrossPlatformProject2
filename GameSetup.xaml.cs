@@ -89,10 +89,11 @@ public partial class GameSetup : ContentPage
         //conver items to strings, will be used in game session
         string selectedPlayers = playerPicker.SelectedItem.ToString(); 
         string selectedDifficulty = difficultyPicker.SelectedItem.ToString();
+        string selectedCategory = categoryPicker.SelectedItem.ToString();
 
 
         //push these values to the game page for use
-        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, playerNames));
+        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, selectedCategory, playerNames));
 
     }
   
