@@ -60,6 +60,10 @@ public partial class GamePage : ContentPage
 
             //DisplayQuestion();
         }
+        else //display in case of error
+        {
+            await DisplayAlert("Error", "No questions available for the selected options.", "OK");
+        }
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
