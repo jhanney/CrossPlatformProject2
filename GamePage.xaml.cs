@@ -1,4 +1,5 @@
 namespace CrossPlatformProject2;
+using CrossPlatformProject2.Models; //implement models to gamepage 
 
 public partial class GamePage : ContentPage
 {
