@@ -42,4 +42,11 @@ public partial class GamePage : ContentPage
         //place holder text for next question
         questionLabel.Text = "Next question goes here.";
     }
+
+    private void OnSaveGameClicked(object sender, EventArgs e)
+    {
+        //placeholder for save game
+        //implementation will include saving game and scores
+        DisplayAlert("Save Game", "Game progress saved successfuly.", "OK"); 
+    }
 }
