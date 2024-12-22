@@ -19,6 +19,13 @@ public partial class GamePage : ContentPage
         this.playerNames = playerNames;
         this.selectedCategory = selectedCategory;
 
+        LoadQuestionsFromApi(selectedCategory, selectedDifficulty);//load the questions dynamically from API
+
+    }
+    private List<QuestionModel> questions = new List<QuestionModel>(); //list to hold question list
+    private void LoadQuestionsFromApi(string selectedCategory, string selectedDifficulty)
+    {
+        throw new NotImplementedException();
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
