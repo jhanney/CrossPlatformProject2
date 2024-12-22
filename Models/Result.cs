@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformProject2.Models
 {
-    class Result
+    public class Result
     {
         public string type { get; set; } //question type
         public string difficulty { get; set; }//dificulty level

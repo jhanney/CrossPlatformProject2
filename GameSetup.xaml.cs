@@ -1,3 +1,6 @@
+using Newtonsoft.Json;
+using CrossPlatformProject2.Models; //implement models to gamepage  
+
 namespace CrossPlatformProject2;
 
 public partial class GameSetup : ContentPage
@@ -22,7 +25,29 @@ public partial class GameSetup : ContentPage
 
     private async void LoadCategories()
     {
-        
+        string apiUrl = "https://opentdb.com/api.php?amount=10";
+
+        using HttpClient client = new HttpClient();
+        var response = await client.GetStringAsync(apiUrl);
+
+        // Deserialize JSON into CategoryResponse
+        var root = JsonConvert.DeserializeObject<Root>(response);
+
+
+        //extract categories
+        if (root?.results != null)
+        {
+            var uniqueCategories = root.results
+                .Select(result => result.category)//extract categori form each result
+                .Distinct()//no dupplicates
+                .ToList();//ad to list
+
+
+            foreach (  var category in uniqueCategories)
+            {
+                categoryPicker.Items.Add(category); // Populate the picker with category names
+            }
+        }
     }
 
     private void OnPlayerCountChanged(object sender, EventArgs e)
