@@ -27,7 +27,7 @@ public partial class GamePage : ContentPage
 
         //check if answer is correct
         //compare button text to correct answer, placeholder for now 
-        if (clickedButton.Text == "Corredt Answer") 
+        if (clickedButton.Text == "Correct Answer") 
         {
             //increment score
             score++;
