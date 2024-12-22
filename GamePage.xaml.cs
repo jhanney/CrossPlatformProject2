@@ -1,5 +1,6 @@
 namespace CrossPlatformProject2;
 using CrossPlatformProject2.Models; //implement models to gamepage 
+using Newtonsoft.Json;//json desrializer
 
 public partial class GamePage : ContentPage
 {
@@ -42,9 +43,10 @@ public partial class GamePage : ContentPage
        
 
         using HttpClient client = new HttpClient();
+        var response = await client.GetStringAsync(apiURL);
 
-        // Make an asynchronous GET request to the API
-        var response = await client.GetAsync(apiURL); 
+        //async request to get from api
+        var root = JsonConvert.DeserializeObject<Root>(response); 
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
