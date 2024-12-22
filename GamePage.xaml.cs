@@ -59,18 +59,23 @@ public partial class GamePage : ContentPage
                     IncorrectAnswers = result.incorrect_answers
                 }).ToList();
 
-                //DisplayQuestion();
+                DisplayQuestion();
             }
             else //display in case of error
             {
                 await DisplayAlert("Error", "No questions available for the selected options.", "OK");
             }
         }
-        catch (Exception ex) 
+        catch (Exception ex) //display alert if questions not loaded
         {
             await DisplayAlert("Error", $"Failed to load questions: {ex.Message}", "OK");
         }
 
+    }
+
+    private void DisplayQuestion()
+    {
+        
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
