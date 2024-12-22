@@ -22,10 +22,10 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <!--buttons-->
-                <Button x:Name="answerButton1" Text="Answer 1" BackgroundColor="Grey" TextColor="White"  Grid.Row="0" Grid.Column="0"></Button>
-                <Button x:Name="answerButton2" Text="Answer 2" BackgroundColor="Grey" TextColor="White" Grid.Row="0" Grid.Column="1"></Button>
-                <Button x:Name="answerButton3" Text="Answer 3" BackgroundColor="Grey" TextColor="White"  Grid.Row="1" Grid.Column="0"></Button>
-                <Button x:Name="answerButton4" Text="Answer 4" BackgroundColor="Grey" TextColor="White" Grid.Row="1" Grid.Column="1"></Button>
+                <Button x:Name="answerButton1" Text="Answer 1" BackgroundColor="Grey" TextColor="White"  Grid.Row="0" Grid.Column="0" Clicked="OnAnswerClicked"></Button>
+                <Button x:Name="answerButton2" Text="Answer 2" BackgroundColor="Grey" TextColor="White" Grid.Row="0" Grid.Column="1" Clicked="OnAnswerClicked"></Button>
+                <Button x:Name="answerButton3" Text="Answer 3" BackgroundColor="Grey" TextColor="White"  Grid.Row="1" Grid.Column="0" Clicked="OnAnswerClicked"></Button>
+                <Button x:Name="answerButton4" Text="Answer 4" BackgroundColor="Grey" TextColor="White" Grid.Row="1" Grid.Column="1" Clicked="OnAnswerClicked"></Button>
             </Grid>
             <!--display the scores-->
             <HorizontalStackLayout>
