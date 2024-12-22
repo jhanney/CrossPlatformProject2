@@ -73,7 +73,7 @@ public partial class GamePage : ContentPage
 
     }
 
-    private void DisplayQuestion()
+    private async void DisplayQuestion()
     {
         //ensure index is within range 
         if (currentQuestionIndex < triviaQuestions.Count)
@@ -89,14 +89,22 @@ public partial class GamePage : ContentPage
                 .ToList();//add result to list
 
             //display shuffled answers on the buttons
-            answerButton1.Text = answers[0]; 
-            answerButton2.Text = answers[1]; 
-            answerButton3.Text = answers[2];
-            answerButton4.Text = answers[3];
+            if(answers.Count < 4)
+            {
+                answerButton1.Text = answers[0];
+                answerButton2.Text = answers[1];
+                answerButton3.Text = answers[2];
+                answerButton4.Text = answers[3];
+            }
         }
         else
         {
-            endGame(); 
+            await DisplayAlert("Error", "Invalid question data detected. Skipping to the next question.", "OK");
+            currentQuestionIndex++;
+            if (currentQuestionIndex < triviaQuestions.Count)
+                DisplayQuestion();
+            else
+                endGame();
         }
     }
 
