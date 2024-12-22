@@ -11,7 +11,7 @@ public partial class GamePage : ContentPage
 
     private List<string> playerNames { get; set; }//stores player names
 
-    private const string ApiUrlTemplate = "https://opentdb.com/api.php?amount=10&category={category}&difficulty={difficulty}"; //api url
+    private const string apiURL = "https://opentdb.com/api.php?amount=10&category={category}&difficulty={difficulty}"; //api url 
 
     private int currentPlayerIndex = 0;// keep track of current player
 
@@ -32,23 +32,19 @@ public partial class GamePage : ContentPage
             playerScores[player] = 0;
         }
 
-        string apiUrl = ApiUrlTemplate
-            .Replace("{category}", selectedCategory)
-            .Replace("{difficulty}", selectedDifficulty);
-       
-        LoadQuestionsFromApi(apiUrl);
+        LoadQuestionsFromApi(selectedCategory, selectedDifficulty);//load the questions dynamically from API
 
     }
     private List<QuestionModel> questions = new List<QuestionModel>(); //list to hold question list
     private int currentQuestionIndex = 0; //keep track of question
-    private void LoadQuestionsFromApi(string apiUrl)
+    private async void LoadQuestionsFromApi(string selectedCategory, string selectedDifficulty)
     {
        
 
         using HttpClient client = new HttpClient();
 
         // Make an asynchronous GET request to the API
-        var response = await client.GetAsync(apiUrl); 
+        var response = await client.GetAsync(apiURL); 
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
