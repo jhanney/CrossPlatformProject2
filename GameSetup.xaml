@@ -32,7 +32,6 @@
             </StackLayout>
             <!--category picker-->
             <StackLayout Grid.Row="3" Spacing="10">
-                <Label Text="Select Category:" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White" />
                 <Picker x:Name="categoryPicker" Title="Choose Category" TitleColor="White" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular" />
             </StackLayout>
             <!--player name entry-->
