@@ -36,7 +36,8 @@ public partial class GamePage : ContentPage
         LoadQuestionsFromApi(selectedCategory, selectedDifficulty);//load the questions dynamically from API
 
     }
-    private List<QuestionModel> questions = new List<QuestionModel>(); //list to hold question list
+    private List<QuestionModel> triviaQuestions = new List<QuestionModel>(); // Stores fetched trivia questions
+                                                                             //list to hold question list
     private int currentQuestionIndex = 0; //keep track of question
     private async void LoadQuestionsFromApi(string selectedCategory, string selectedDifficulty)
     {
@@ -50,7 +51,14 @@ public partial class GamePage : ContentPage
 
         if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
         {
+            triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
+            {
+                Question = result.question,
+                CorrectAnswer = result.correct_answer,
+                IncorrectAnswers = result.incorrect_answers
+            }).ToList();
 
+            //DisplayQuestion();
         }
     }
 
