@@ -117,15 +117,15 @@ public partial class GamePage : ContentPage
         }
 
         var currentQuestion = triviaQuestions[currentQuestionIndex];//retireve current index of question and question
+        string currentPlayerName = playerNames[currentPlayerIndex];//retrieves the name of the player whose turn it currently is
 
         //check if answer is correct
         //compare button text to correct answer, placeholder for now 
-        if (clickedButton.Text == "Correct Answer") 
+        if (clickedButton.Text == currentQuestion.CorrectAnswer)
         {
-            //increment score
-            score++;
-            //update the score UI
-            
+            // Update the score for the current player
+            playerScores[currentPlayerName]++;
+            DisplayAlert("Correct!", $"{playerNames[currentPlayerIndex]} got it right!", "Next");
         }
         else
         {
