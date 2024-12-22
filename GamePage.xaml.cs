@@ -75,7 +75,13 @@ public partial class GamePage : ContentPage
 
     private void DisplayQuestion()
     {
-        
+        //ensure index is within range 
+        if (currentQuestionIndex < triviaQuestions.Count)
+        {
+            var question = triviaQuestions[currentQuestionIndex];//retireve question object from the list
+
+            questionLabel.Text = question.Question;//update UI
+        }
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
