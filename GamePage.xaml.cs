@@ -19,6 +19,8 @@ public partial class GamePage : ContentPage
 
     private Dictionary<string, int> playerScores = new();//track the players scores 
 
+    private static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json"); //file path
+
 
     public GamePage(string selectedPlayers, string selectedDifficulty, string seleectedCategory, List<string> playerNames)
     {
@@ -195,6 +197,11 @@ public partial class GamePage : ContentPage
 
         //place holder text for next question
         //questionLabel.Text = "Next question goes here.";
+    }
+
+    private async Task SaveGameToFile()
+    {
+
     }
 
     private void OnSaveGameClicked(object sender, EventArgs e)
