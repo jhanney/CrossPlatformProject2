@@ -133,7 +133,7 @@ public partial class GameSetup : ContentPage
 
             if (gameState != null)
             {
-                // Navigate to the GamePage with the loaded data
+                //navigate to the GamePage with the loaded data
                 await Navigation.PushAsync(new GamePage(
                     gameState.PlayerNames.Count.ToString() + " Players", // Use number of players
                     gameState.SelectedDifficulty,
@@ -151,6 +151,11 @@ public partial class GameSetup : ContentPage
         {
             await DisplayAlert("No Saved Game", "No saved game data found.", "OK");
         }
+    }
+
+    private async void OnLoadGameClicked(object sender, EventArgs e)
+    {
+        await LoadGameFromFile();
     }
 
 

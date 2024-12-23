@@ -10,6 +10,10 @@ namespace CrossPlatformProject2.Models
         public int CurrentPlayerIndex { get; set; }
         public string SelectedDifficulty { get; set; }
         public string SelectedCategory { get; set; }
+
+        public string SelectedPlayers { get; set; }//added to store selected players
         public List<string> PlayerNames { get; set; }
+
+        public List<QuestionModel> TriviaQuestions { get; set; } //added to store question
     }
 }

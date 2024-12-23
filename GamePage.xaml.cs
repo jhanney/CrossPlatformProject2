@@ -22,22 +22,38 @@ public partial class GamePage : ContentPage
     public static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json"); //file path
 
 
-    public GamePage(string selectedPlayers, string selectedDifficulty, string seleectedCategory, List<string> playerNames, GameState gameState)
+    public GamePage(string selectedPlayers, string selectedDifficulty, string seleectedCategory, List<string> playerNames, GameState gameState = null)
     {
         InitializeComponent();
 
-        this.selectedPlayers = selectedPlayers;
-        this.selectedDifficulty = selectedDifficulty;
-        this.playerNames = playerNames;
-        this.selectedCategory = selectedCategory;
-       //this.categoryID = categoryID;
-
-        foreach (var player in playerNames)//start player scores at 0
+        if (gameState != null)
         {
-            playerScores[player] = 0;
+            //load from game state 
+            this.selectedPlayers = gameState.SelectedPlayers; 
+            this.selectedDifficulty = gameState.SelectedDifficulty;
+            this.selectedCategory = gameState.SelectedCategory;
+            this.playerNames = gameState.PlayerNames;
+            this.triviaQuestions = gameState.TriviaQuestions;
+            this.currentQuestionIndex = gameState.CurrentQuestionIndex;
+            this.currentPlayerIndex = gameState.CurrentPlayerIndex;
+            this.playerScores = gameState.PlayerScores;
         }
+        else
+        {
+            //start new game
+            this.selectedPlayers = selectedPlayers;
+            this.selectedDifficulty = selectedDifficulty;
+            this.selectedCategory = selectedCategory;
+            this.playerNames = playerNames;
 
-        LoadQuestionsFromApi(selectedCategory, selectedDifficulty);//load the questions dynamically from API
+            foreach (var player in playerNames)
+            {
+                playerScores[player] = 0;
+            }
+
+            //load from the api 
+            LoadQuestionsFromApi(selectedCategory, selectedDifficulty); 
+        }
 
     }
     private List<QuestionModel> triviaQuestions = new List<QuestionModel>(); // Stores fetched trivia questions
