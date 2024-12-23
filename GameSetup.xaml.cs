@@ -51,6 +51,10 @@ public partial class GameSetup : ContentPage
                 categoryIdMap[category.name] = category.id;//store the name to the id
             }
         }
+        else
+        {
+            await DisplayAlert("Error", "Failed to load categories.", "OK");
+        }
     }
 
     private void OnPlayerCountChanged(object sender, EventArgs e)
