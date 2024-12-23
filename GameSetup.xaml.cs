@@ -6,8 +6,7 @@ namespace CrossPlatformProject2;
 public partial class GameSetup : ContentPage
 {
     private List<Entry> playerNameEntriesList = new List<Entry>();//list to store player names
-    private Dictionary<string, int> categoryIdMap = new();//hold category id
-    public GameSetup()
+	public GameSetup()
 	{
 		InitializeComponent();
         //add options for player selection
@@ -32,28 +31,22 @@ public partial class GameSetup : ContentPage
         var response = await client.GetStringAsync(apiUrl);
 
         // Deserialize JSON into CategoryResponse
-        var categoryResponse = JsonConvert.DeserializeObject<CategoryResponse>(response);
+        var root = JsonConvert.DeserializeObject<Root>(response);
 
 
         //extract categories
-        if (categoryResponse?.Trivia_Categories != null)
+        if (root?.results != null)
         {
-            //var uniqueCategories = root.results
-            //  .Select(result => result.category)//extract categori form each result
-            //.Distinct()//no dupplicates
-            //.ToList();//ad to list
+            var uniqueCategories = root.results
+                .Select(result => result.category)
+                .Distinct() // Remove duplicates
+                .ToList();
 
 
-            //populate the picker with the available categories
-            foreach (var category in categoryResponse.Trivia_Categories)
+            foreach (  var category in uniqueCategories)
             {
-                categoryPicker.Items.Add(category.name);
-                categoryIdMap[category.name] = category.id;//store the name to the id
+                categoryPicker.Items.Add(category); // Populate the picker with category names
             }
-        }
-        else
-        {
-            await DisplayAlert("Error", "Failed to load categories.", "OK");
         }
     }
 

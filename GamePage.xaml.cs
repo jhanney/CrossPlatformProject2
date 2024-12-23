@@ -9,6 +9,7 @@ public partial class GamePage : ContentPage
     private string selectedPlayers { get; set; }//selected player
     private string selectedDifficulty { get; set; }//difficulty
     private string selectedCategory { get; set; }//category
+     private int categoryID { get; set; }
 
     private List<string> playerNames { get; set; }//stores player names
 
@@ -19,7 +20,7 @@ public partial class GamePage : ContentPage
     private Dictionary<string, int> playerScores = new();//track the players scores 
 
 
-    public GamePage(string selectedPlayers, string selectedDifficulty, string selectedCategory, List<string> playerNames)
+    public GamePage(string selectedPlayers, string selectedDifficulty, string seleectedCategory, List<string> playerNames)
     {
         InitializeComponent();
 
@@ -27,6 +28,7 @@ public partial class GamePage : ContentPage
         this.selectedDifficulty = selectedDifficulty;
         this.playerNames = playerNames;
         this.selectedCategory = selectedCategory;
+       //this.categoryID = categoryID;
 
         foreach (var player in playerNames)//start player scores at 0
         {
@@ -54,9 +56,10 @@ public partial class GamePage : ContentPage
             {
                 triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
                 {
-                    Question = result.question,
-                    CorrectAnswer = result.correct_answer,
-                    IncorrectAnswers = result.incorrect_answers
+                    //decode any html
+                    Question = WebUtility.HtmlDecode(result.question),
+                    CorrectAnswer = WebUtility.HtmlDecode(result.correct_answer),
+                    IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
                 }).ToList();
 
                 DisplayQuestion();
@@ -134,6 +137,15 @@ public partial class GamePage : ContentPage
         //compare button text to correct answer, placeholder for now 
         if (clickedButton.Text == currentQuestion.CorrectAnswer)
         {
+            //calculate points based on difficulty
+            int points = selectedDifficulty switch
+            {
+                "Easy" => 2,
+                "Medium" => 6,
+                "Hard" => 10,
+                _ => 0 //default
+            };
+
             // Update the score for the current player
             playerScores[currentPlayerName]++;
             DisplayAlert("Correct!", $"{playerNames[currentPlayerIndex]} got it right!", "Next");
