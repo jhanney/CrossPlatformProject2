@@ -104,7 +104,7 @@ public partial class GamePage : ContentPage
             //decode html coded questions
             questionLabel.Text = WebUtility.HtmlDecode(question.Question);
 
-            questionLabel.Text = question.Question;//update UI
+            
 
             //make a list with correct and incorrect answers
             var answers = question.IncorrectAnswers
@@ -223,7 +223,7 @@ public partial class GamePage : ContentPage
             {
                 PlayerScores = playerScores,
                 CurrentQuestionIndex = currentQuestionIndex,
-                RemainingQuestions = triviaQuestions.Skip(currentQuestionIndex).ToList(),
+                TriviaQuestions = triviaQuestions,//save questions
                 CurrentPlayerIndex = currentPlayerIndex,
                 SelectedDifficulty = selectedDifficulty,
                 SelectedCategory = selectedCategory,
