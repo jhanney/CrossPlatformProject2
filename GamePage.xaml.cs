@@ -123,6 +123,9 @@ public partial class GamePage : ContentPage
         {
             scoresMessage += $"{playerScore.Key}: {playerScore.Value} points\n";
         }
+        //get highest score
+        int highestScore = playerScores.Values.Max();
+
 
         //display final scores
         await DisplayAlert("Final Scores", scoresMessage, "OK");
