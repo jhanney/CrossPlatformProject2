@@ -114,9 +114,21 @@ public partial class GamePage : ContentPage
         }
     }
 
-    private void endGame()
+    private async void endGame()
     {
-        throw new NotImplementedException();
+        //score message for end of game
+        string scoresMessage = "Game Over! Here are the final scores:\n";
+
+        foreach (var playerScore in playerScores)
+        {
+            scoresMessage += $"{playerScore.Key}: {playerScore.Value} points\n";
+        }
+
+        //display final scores
+        await DisplayAlert("Final Scores", scoresMessage, "OK");
+
+        //navigate to home page
+        await Navigation.PopToRootAsync();
     }
 
     private void OnAnswerClicked(object sender, EventArgs e)
