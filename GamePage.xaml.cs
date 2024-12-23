@@ -1,7 +1,7 @@
 namespace CrossPlatformProject2;
 using CrossPlatformProject2.Models; //implement models to gamepage 
 using Newtonsoft.Json;//json desrializer
-
+using System.Net;
 public partial class GamePage : ContentPage
 {
     private int score;
@@ -80,6 +80,9 @@ public partial class GamePage : ContentPage
         {
             var question = triviaQuestions[currentQuestionIndex];//retireve question object from the list
 
+            //decode html coded questions
+            questionLabel.Text = WebUtility.HtmlDecode(question.Question);
+
             questionLabel.Text = question.Question;//update UI
 
             //make a list with correct and incorrect answers
@@ -89,7 +92,7 @@ public partial class GamePage : ContentPage
                 .ToList();//add result to list
 
             //display shuffled answers on the buttons
-            if(answers.Count < 4)
+            if(answers.Count == 4)
             {
                 answerButton1.Text = answers[0];
                 answerButton2.Text = answers[1];
