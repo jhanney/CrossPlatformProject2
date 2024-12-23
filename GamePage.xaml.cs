@@ -199,7 +199,7 @@ public partial class GamePage : ContentPage
         //questionLabel.Text = "Next question goes here.";
     }
 
-    private async Task SaveGameToFile()
+    private async Task SaveGameToFile()//save the game state to file 
     {
         try
         {
@@ -221,8 +221,16 @@ public partial class GamePage : ContentPage
         }
         catch (Exception ex) 
         {
+            await DisplayAlert("Error", $"Failed to save game: {ex.Message}", "OK");
         }
     }
+
+    private async Task LoadGameFromFile()
+    {
+        try 
+        { 
+
+        }
 
     private void OnSaveGameClicked(object sender, EventArgs e)
     {
