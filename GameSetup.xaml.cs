@@ -6,7 +6,9 @@ namespace CrossPlatformProject2;
 public partial class GameSetup : ContentPage
 {
     private List<Entry> playerNameEntriesList = new List<Entry>();//list to store player names
-	public GameSetup()
+
+    private static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json");//file path
+    public GameSetup()
 	{
 		InitializeComponent();
         //add options for player selection
@@ -120,7 +122,38 @@ public partial class GameSetup : ContentPage
         await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, selectedCategory, playerNames));
 
     }
-  
+
+    private async Task LoadGameFromFile()
+    {
+        if (File.Exists(GamePage.FilePath))
+        {
+            string json = await File.ReadAllTextAsync(GamePage.FilePath);
+
+            var gameState = JsonConvert.DeserializeObject<GameState>(json);
+
+            if (gameState != null)
+            {
+                // Navigate to the GamePage with the loaded data
+                await Navigation.PushAsync(new GamePage(
+                    gameState.PlayerNames.Count.ToString() + " Players", // Use number of players
+                    gameState.SelectedDifficulty,
+                    gameState.SelectedCategory,
+                    gameState.PlayerNames,
+                    gameState
+                ));
+            }
+            else
+            {
+                await DisplayAlert("Error", "Failed to load the saved game.", "OK");
+            }
+        }
+        else
+        {
+            await DisplayAlert("No Saved Game", "No saved game data found.", "OK");
+        }
+    }
+
+
 
     private async void homeButton_Clicked(object sender, EventArgs e)
     {

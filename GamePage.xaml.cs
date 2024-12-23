@@ -19,10 +19,10 @@ public partial class GamePage : ContentPage
 
     private Dictionary<string, int> playerScores = new();//track the players scores 
 
-    private static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json"); //file path
+    public static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json"); //file path
 
 
-    public GamePage(string selectedPlayers, string selectedDifficulty, string seleectedCategory, List<string> playerNames)
+    public GamePage(string selectedPlayers, string selectedDifficulty, string seleectedCategory, List<string> playerNames, GameState gameState)
     {
         InitializeComponent();
 
@@ -225,32 +225,13 @@ public partial class GamePage : ContentPage
         }
     }
 
-    private async Task LoadGameFromFile()
-    {
-        try 
-        { 
-            if (File.Exists(FilePath))
-            {
-                var gameStateJson = await File.ReadAllTextAsync(FilePath);//read the saved game
-                var gameState = JsonConvert.DeserializeObject<GameState>(gameStateJson);//deserailize 
+    
 
-                playerScores = gameState.PlayerScores;
-                currentQuestionIndex = gameState.CurrentQuestionIndex;
-                triviaQuestions = gameState.RemainingQuestions;
-                currentPlayerIndex = gameState.CurrentPlayerIndex;
-                selectedDifficulty = gameState.SelectedDifficulty;
-                selectedCategory = gameState.SelectedCategory;
-                playerNames = gameState.PlayerNames;
-
-                await DisplayAlert("Load Game", "Game progress loaded successfully.", "OK");
-                DisplayQuestion();//display question
-            }
-        }
-
-    private void OnSaveGameClicked(object sender, EventArgs e)
+    private async void OnSaveGameClicked(object sender, EventArgs e)
     {
         //placeholder for save game
         //implementation will include saving game and scores
+        await SaveGameToFile();
         DisplayAlert("Save Game", "Game progress saved successfuly.", "OK"); 
     }
 }
