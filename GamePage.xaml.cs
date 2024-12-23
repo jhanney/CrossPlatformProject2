@@ -201,7 +201,16 @@ public partial class GamePage : ContentPage
 
     private async Task SaveGameToFile()
     {
-
+        var gameState = new GameState
+        {
+            PlayerScores = playerScores,
+            CurrentQuestionIndex = currentQuestionIndex,
+            RemainingQuestions = triviaQuestions.Skip(currentQuestionIndex).ToList(),
+            CurrentPlayerIndex = currentPlayerIndex,
+            SelectedDifficulty = selectedDifficulty,
+            SelectedCategory = selectedCategory,
+            PlayerNames = playerNames
+        };
     }
 
     private void OnSaveGameClicked(object sender, EventArgs e)
