@@ -211,6 +211,11 @@ public partial class GamePage : ContentPage
             SelectedCategory = selectedCategory,
             PlayerNames = playerNames
         };
+        //save game state
+        var gameStateJson = JsonConvert.SerializeObject(gameState);
+        await File.WriteAllTextAsync(FilePath, gameStateJson);
+
+        await DisplayAlert("Save Game", "Game progress saved successfully.", "OK");
     }
 
     private void OnSaveGameClicked(object sender, EventArgs e)
