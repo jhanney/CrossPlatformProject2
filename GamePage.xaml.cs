@@ -229,7 +229,22 @@ public partial class GamePage : ContentPage
     {
         try 
         { 
+            if (File.Exists(FilePath))
+            {
+                var gameStateJson = await File.ReadAllTextAsync(FilePath);//read the saved game
+                var gameState = JsonConvert.DeserializeObject<GameState>(gameStateJson);//deserailize 
 
+                playerScores = gameState.PlayerScores;
+                currentQuestionIndex = gameState.CurrentQuestionIndex;
+                triviaQuestions = gameState.RemainingQuestions;
+                currentPlayerIndex = gameState.CurrentPlayerIndex;
+                selectedDifficulty = gameState.SelectedDifficulty;
+                selectedCategory = gameState.SelectedCategory;
+                playerNames = gameState.PlayerNames;
+
+                await DisplayAlert("Load Game", "Game progress loaded successfully.", "OK");
+                DisplayQuestion();//display question
+            }
         }
 
     private void OnSaveGameClicked(object sender, EventArgs e)
