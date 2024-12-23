@@ -201,21 +201,27 @@ public partial class GamePage : ContentPage
 
     private async Task SaveGameToFile()
     {
-        var gameState = new GameState
+        try
         {
-            PlayerScores = playerScores,
-            CurrentQuestionIndex = currentQuestionIndex,
-            RemainingQuestions = triviaQuestions.Skip(currentQuestionIndex).ToList(),
-            CurrentPlayerIndex = currentPlayerIndex,
-            SelectedDifficulty = selectedDifficulty,
-            SelectedCategory = selectedCategory,
-            PlayerNames = playerNames
-        };
-        //save game state
-        var gameStateJson = JsonConvert.SerializeObject(gameState);
-        await File.WriteAllTextAsync(FilePath, gameStateJson);
+            var gameState = new GameState
+            {
+                PlayerScores = playerScores,
+                CurrentQuestionIndex = currentQuestionIndex,
+                RemainingQuestions = triviaQuestions.Skip(currentQuestionIndex).ToList(),
+                CurrentPlayerIndex = currentPlayerIndex,
+                SelectedDifficulty = selectedDifficulty,
+                SelectedCategory = selectedCategory,
+                PlayerNames = playerNames
+            };
+            //save game state
+            var gameStateJson = JsonConvert.SerializeObject(gameState);
+            await File.WriteAllTextAsync(FilePath, gameStateJson);
 
-        await DisplayAlert("Save Game", "Game progress saved successfully.", "OK");
+            await DisplayAlert("Save Game", "Game progress saved successfully.", "OK");
+        }
+        catch (Exception ex) 
+        {
+        }
     }
 
     private void OnSaveGameClicked(object sender, EventArgs e)
