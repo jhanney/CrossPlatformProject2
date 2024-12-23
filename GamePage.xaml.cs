@@ -132,6 +132,16 @@ public partial class GamePage : ContentPage
             .Select(p => p.Key)//get player name
             .ToList();
 
+        if (winners.Count == 1)
+        {
+            scoresMessage += $"\nWinner: {winners[0]} with {highestScore} points!";
+        }
+        else
+        {
+            scoresMessage += $"\nIt's a tie! Winners: {string.Join(", ", winners)} with {highestScore} points!";
+        }
+
+
         //display final scores
         await DisplayAlert("Final Scores", scoresMessage, "OK");
 
@@ -166,8 +176,8 @@ public partial class GamePage : ContentPage
                 _ => 0 //default
             };
 
-            // Update the score for the current player
-            playerScores[currentPlayerName]++;
+            //updated score for player
+            playerScores[currentPlayerName] += points;
             DisplayAlert("Correct!", $"{currentPlayerName} got it right and earned {points} points!", "Next");//display alert now shows points earned
         }
         else
