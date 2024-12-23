@@ -148,7 +148,7 @@ public partial class GamePage : ContentPage
 
             // Update the score for the current player
             playerScores[currentPlayerName]++;
-            DisplayAlert("Correct!", $"{playerNames[currentPlayerIndex]} got it right!", "Next");
+            DisplayAlert("Correct!", $"{currentPlayerName} got it right and earned {points} points!", "Next");//display alert now shows points earned
         }
         else
         {
