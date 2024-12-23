@@ -126,6 +126,11 @@ public partial class GamePage : ContentPage
         //get highest score
         int highestScore = playerScores.Values.Max();
 
+        //determine winner
+        var winners = playerScores
+            .Where(p => p.Value == highestScore) //where highest score
+            .Select(p => p.Key)//get player name
+            .ToList();
 
         //display final scores
         await DisplayAlert("Final Scores", scoresMessage, "OK");
