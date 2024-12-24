@@ -37,6 +37,8 @@ public partial class GamePage : ContentPage
             this.currentQuestionIndex = gameState.CurrentQuestionIndex;
             this.currentPlayerIndex = gameState.CurrentPlayerIndex;
             this.playerScores = gameState.PlayerScores;
+
+            DisplayQuestion();//diplay next question
         }
         else
         {
@@ -60,13 +62,23 @@ public partial class GamePage : ContentPage
 
     private async Task InitializeGameAsync()
     {
-        await LoadQuestionsFromApi(selectedCategory, selectedDifficulty); 
+        await LoadQuestionsFromApi(selectedCategory, selectedDifficulty);
+
+        if (triviaQuestions.Any())
+        {
+            DisplayQuestion();//questions displayed after being loaded
+        }
+        else
+        {
+            await DisplayAlert("Error", "Failed to load questions. Please try again.", "OK");
+            await Navigation.PopToRootAsync(); //if no options available returns to main page 
+        }
     }
 
     private List<QuestionModel> triviaQuestions = new List<QuestionModel>(); // Stores fetched trivia questions
                                                                              //list to hold question list
     private int currentQuestionIndex = 0; //keep track of question
-    private async void LoadQuestionsFromApi(string selectedCategory, string selectedDifficulty)
+    private async Task LoadQuestionsFromApi(string selectedCategory, string selectedDifficulty)
     {
         try
         {
@@ -87,7 +99,7 @@ public partial class GamePage : ContentPage
                     IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
                 }).ToList();
 
-                DisplayQuestion();
+               // DisplayQuestion();
             }
             else //display in case of error
             {
