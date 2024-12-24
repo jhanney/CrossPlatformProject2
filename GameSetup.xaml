@@ -18,6 +18,7 @@
                 <RowDefinition Height="Auto"></RowDefinition><!--return home-->
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Text="GAME SETUP" FontSize="36" FontFamily="Orbitron-Bold" TextColor="Gold" HorizontalOptions="Center" VerticalOptions="Start" Grid.Row="0"></Label>
             <!--num players picker-->
@@ -41,7 +42,7 @@
             <!--start game button-->
             <Button Text="Start Game" BackgroundColor="Gold" FontSize="16" FontFamily="Orbitron-Regular" HorizontalOptions="Center" WidthRequest="200" Clicked="OnStartButtonClicked_Clicked" Grid.Row="5"></Button>
             <Button x:Name="homeButton" Text="Return Home" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="homeButton_Clicked" FontFamily="Orbitron-Regular" Grid.Row="6"></Button>
-
+            <Button x:Name="loadGame" Text="Load Game" BackgroundColor="#1E90FF" TextColor="White" FontSize="16" Clicked="OnLoadGameClicked" FontFamily="Orbitron-Regular" Grid.Row="7"></Button>
 
         </Grid>
     </Grid>

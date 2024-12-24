@@ -32,7 +32,7 @@
                 <Label x:Name="scoreLabel" Text="Score: 0" FontSize="18" TextColor="Gold" FontFamily="Orbitron-Regular"></Label>
             </HorizontalStackLayout>
             <!--save game button-->
-            <Button Text="Save Game" BackgroundColor="Gold" FontSize="16" FontFamily="Orbitron-Regular"></Button>
+            <Button Text="Save Game" BackgroundColor="Gold" FontSize="16" FontFamily="Orbitron-Regular" Clicked="OnSaveGameClicked"></Button>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
