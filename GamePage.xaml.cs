@@ -22,7 +22,7 @@ public partial class GamePage : ContentPage
     public static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json"); //file path
 
 
-    public GamePage(string selectedPlayers, string selectedDifficulty, string seleectedCategory, List<string> playerNames, GameState gameState = null)
+    public GamePage(string selectedPlayers, string selectedDifficulty, string selectedCategory, List<string> playerNames, GameState gameState = null)
     {
         InitializeComponent();
 
@@ -52,10 +52,17 @@ public partial class GamePage : ContentPage
             }
 
             //load from the api 
-            LoadQuestionsFromApi(selectedCategory, selectedDifficulty); 
+            //LoadQuestionsFromApi(selectedCategory, selectedDifficulty); 
+            _ = InitializeGameAsync();//asynchronosouly loads game, as first question after loading appearing blank
         }
 
     }
+
+    private async Task InitializeGameAsync()
+    {
+        await LoadQuestionsFromApi(selectedCategory, selectedDifficulty); 
+    }
+
     private List<QuestionModel> triviaQuestions = new List<QuestionModel>(); // Stores fetched trivia questions
                                                                              //list to hold question list
     private int currentQuestionIndex = 0; //keep track of question
