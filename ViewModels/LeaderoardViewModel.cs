@@ -8,14 +8,16 @@ namespace CrossPlatformProject2.ViewModels
     {
         public ObservableCollection<ScoreEntry> Scores { get; set; } //observalble collection to store scores
 
-        public LeaderboardViewModel()
+        public LeaderboardViewModel(Dictionary<string, int> playerScores)
         {
-            Scores = new ObservableCollection<ScoreEntry>
-            {
-             new ScoreEntry { playerName = "Josh", score = 100 },
-             new ScoreEntry { playerName = "Trish", score = 90 },
-             new ScoreEntry { playerName = "Joe", score = 80 }
-            };
+            Scores = new ObservableCollection<ScoreEntry>(
+               playerScores
+                   .OrderByDescending(score => score.Value)//sort score in descending order
+                   .Select(score => new ScoreEntry
+                   {
+                       playerName = score.Key,
+                       score = score.Value
+                   }));
         }
 
         public class ScoreEntry //class represents data entered for a score 
