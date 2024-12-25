@@ -53,6 +53,10 @@ namespace CrossPlatformProject2
         {
             //navigate to leaderboard
             isRotoating = false;
+
+            //retrieve scores from global context
+            var playerScores = ((App)Application.Current).PlayerScores;
+
             await Navigation.PushAsync(new Leaderboard(this, playerScores));  //pass references so leaderboard can access methods while navigating to leaderboard
         }
 

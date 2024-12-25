@@ -182,9 +182,21 @@ public partial class GamePage : ContentPage
         //display final scores
         await DisplayAlert("Final Scores", scoresMessage, "OK");
 
-        // Navigate to the LeaderboardPage with player scores
-        await Navigation.PushAsync(new Leaderboard((MainPage)Application.Current.MainPage, playerScores));
-    
+        //save player scores globally
+        ((App)Application.Current).PlayerScores = playerScores;
+
+        //attempt to retrieve the main page of the application
+        //te mainPage is cast as a navigationPage, and then its rootPage is cast to MainPage
+        var mainPage = (Application.Current.MainPage as NavigationPage)?.RootPage as MainPage;
+        if (mainPage != null)//check if main page retrievd
+        {
+            await Navigation.PushAsync(new Leaderboard(mainPage, playerScores));//pass main page references and player scores
+        }
+        else
+        {//error message
+            await DisplayAlert("Error", "Main page could not be found.", "OK");
+        }
+
 
         //navigate to home page
         await Navigation.PopToRootAsync();
