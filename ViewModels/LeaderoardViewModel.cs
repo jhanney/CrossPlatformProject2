@@ -1,5 +1,6 @@
 ﻿
 
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
 
@@ -45,7 +46,16 @@ namespace CrossPlatformProject2.ViewModels
 
         private void SaveScoresToFile()
         {
-            throw new NotImplementedException();
+            try
+            {
+                //serialize scores to JSON and save to file
+                var json = JsonConvert.SerializeObject(Scores);
+                File.WriteAllText(LeaderboardFilePath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to save leaderboard: {ex.Message}");
+            }
         }
 
         public class ScoreEntry //class represents data entered for a score 
