@@ -182,6 +182,10 @@ public partial class GamePage : ContentPage
         //display final scores
         await DisplayAlert("Final Scores", scoresMessage, "OK");
 
+        // Navigate to the LeaderboardPage with player scores
+        await Navigation.PushAsync(new Leaderboard((MainPage)Application.Current.MainPage, playerScores));
+    
+
         //navigate to home page
         await Navigation.PopToRootAsync();
     }

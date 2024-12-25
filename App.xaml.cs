@@ -2,6 +2,7 @@
 {
     public partial class App : Application
     {
+        public Dictionary<string, int> PlayerScores { get; set; } = new Dictionary<string, int>();//player scores accessible globaly
         public App()
         {
             InitializeComponent();

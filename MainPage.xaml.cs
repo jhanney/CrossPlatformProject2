@@ -52,8 +52,8 @@ namespace CrossPlatformProject2
         private async void Leaderboard_Clicked(object sender, EventArgs e) 
         {
             //navigate to leaderboard
-            isRotoating = false; 
-            await Navigation.PushAsync(new Leaderboard(this));  //pass references so leaderboard can access methods while navigating to leaderboard
+            isRotoating = false;
+            await Navigation.PushAsync(new Leaderboard(this, playerScores));  //pass references so leaderboard can access methods while navigating to leaderboard
         }
 
         private async void Achievments_Clicked(object sender, EventArgs e)
