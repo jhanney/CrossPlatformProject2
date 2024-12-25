@@ -264,9 +264,21 @@ public partial class GamePage : ContentPage
 
     private async void OnSaveGameClicked(object sender, EventArgs e)
     {
-        //placeholder for save game
-        //implementation will include saving game and scores
-        await SaveGameToFile();
-        DisplayAlert("Save Game", "Game progress saved successfuly.", "OK"); 
+        try
+        {
+            //save game
+            await SaveGameToFile();
+
+            //display game saved message
+            await DisplayAlert("Save Game", "Game progress saved successfully.", "OK");
+
+            //take user back to home page
+            await Navigation.PopToRootAsync();
+        }
+        catch (Exception ex)
+        {
+            //error handling
+            await DisplayAlert("Error", $"Failed to save the game: {ex.Message}", "OK");
+        }
     }
 }
