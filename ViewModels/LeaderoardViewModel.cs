@@ -60,7 +60,21 @@ namespace CrossPlatformProject2.ViewModels
 
         private ObservableCollection<ScoreEntry> LoadScoresFromFile()
         {
-
+            try
+            {
+                // Check if the leaderboard file exists
+                if (File.Exists(LeaderboardFilePath))
+                {
+                    // Read JSON from the file and deserialize it
+                    var json = File.ReadAllText(LeaderboardFilePath);
+                    return JsonConvert.DeserializeObject<ObservableCollection<ScoreEntry>>(json);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to load leaderboard: {ex.Message}");
+            }
+            return null; // Return null if no file exists or error occurs
         }
 
         public class ScoreEntry //class represents data entered for a score 
