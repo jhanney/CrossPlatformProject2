@@ -58,6 +58,11 @@ namespace CrossPlatformProject2.ViewModels
             }
         }
 
+        private ObservableCollection<ScoreEntry> LoadScoresFromFile()
+        {
+
+        }
+
         public class ScoreEntry //class represents data entered for a score 
         {
             public string playerName { get; set; }
