@@ -60,7 +60,16 @@ namespace CrossPlatformProject2.ViewModels
 
         private ObservableCollection<Achievment>? LoadAchievementsFromFile()
         {
-            throw new NotImplementedException();
+            
+            if (File.Exists(AchievementsFilePath))//see if file exists
+            {
+                //read the data
+                var json = File.ReadAllText(AchievementsFilePath);
+
+                //deserialize the data 
+                return JsonConvert.DeserializeObject<ObservableCollection<Achievment>>(json);
+            }
+            return null; 
         }
     }
     public class Achievment
