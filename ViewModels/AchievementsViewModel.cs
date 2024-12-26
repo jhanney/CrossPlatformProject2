@@ -60,14 +60,22 @@ namespace CrossPlatformProject2.ViewModels
 
         private ObservableCollection<Achievment>? LoadAchievementsFromFile()
         {
-            
-            if (File.Exists(AchievementsFilePath))//see if file exists
+            try
             {
-                //read the data
-                var json = File.ReadAllText(AchievementsFilePath);
 
-                //deserialize the data 
-                return JsonConvert.DeserializeObject<ObservableCollection<Achievment>>(json);
+                if (File.Exists(AchievementsFilePath))//see if file exists
+                {
+                    //read the data
+                    var json = File.ReadAllText(AchievementsFilePath);
+
+                    //deserialize the data 
+                    return JsonConvert.DeserializeObject<ObservableCollection<Achievment>>(json);
+                }
+            }
+            catch (Exception ex)
+            {
+                Application.Current.MainPage?.DisplayAlert("Error", $"Failed to load achievements: {ex.Message}", "OK");
+
             }
             return null; 
         }
