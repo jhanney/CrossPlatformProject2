@@ -15,9 +15,11 @@ namespace CrossPlatformProject2.ViewModels
             //load achievements from file or initialize with default achievements if the file doesn't exist
             Achievements = LoadAchievementsFromFile() ?? new ObservableCollection<Achievment>
             {
-                new Achievment { Title = "First Win", Description = "Win Your First Trivia Galaxy Game!!", IsUnlocked = false },
-                new Achievment { Title = "Space Cadet", Description = "Answer 5 questions correctly", IsUnlocked = false },
-                new Achievment { Title = "Space Ranger", Description = "Answer 10 questions correctly", IsUnlocked = false }
+                new Achievment { Title = "First Points", Description = "Score your first points", IsUnlocked = false, PointThreshold = 1 },
+                new Achievment { Title = "Space Cadet", Description = "Score 6 points", IsUnlocked = false, PointThreshold = 6 },
+                new Achievment { Title = "Space Ranger", Description = "Score 10 points", IsUnlocked = false, PointThreshold = 10 },
+                new Achievment { Title = "Galaxy Explorer", Description = "Score 20 points", IsUnlocked = false, PointThreshold = 20 },
+                new Achievment { Title = "Trivia Master", Description = "Score 100 points", IsUnlocked = false, PointThreshold = 100 }
             };
         }
 
