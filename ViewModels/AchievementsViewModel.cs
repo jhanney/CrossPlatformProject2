@@ -43,11 +43,19 @@ namespace CrossPlatformProject2.ViewModels
 
         private void SaveAchievementsToFile()
         {
-            //convert the achievements collection to JSON format
-            var json = JsonConvert.SerializeObject(Achievements);
+            try
+            {
+                //convert the achievements collection to JSON format
+                var json = JsonConvert.SerializeObject(Achievements);
 
-          
-            File.WriteAllText(AchievementsFilePath, json);//write to file
+
+                File.WriteAllText(AchievementsFilePath, json);//write to file
+            }
+            catch(Exception ex)
+            {
+                //display an alert to the user
+                Application.Current.MainPage?.DisplayAlert("Error", $"Failed to save achievements: {ex.Message}", "OK");
+            }
         }
 
         private ObservableCollection<Achievment>? LoadAchievementsFromFile()
