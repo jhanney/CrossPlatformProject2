@@ -22,10 +22,14 @@ public partial class GamePage : ContentPage
 
     public static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json"); //file path
 
+    private AchievementsViewModel achievementsViewModel;// instantiate viemodel
+
 
     public GamePage(string selectedPlayers, string selectedDifficulty, string selectedCategory, List<string> playerNames, GameState gameState = null)
     {
         InitializeComponent();
+
+        achievementsViewModel = new AchievementsViewModel();
 
         if (gameState != null)
         {
@@ -279,9 +283,13 @@ public partial class GamePage : ContentPage
 
     public void CheckAndUnlockAchievements()//method to unlock acheivments 
     {
-        foreach (var achievement in AchievementsViewModel.Achievements)//for each achievment in the viewmodel
+        int currentScore = playerScores[playerNames[currentPlayerIndex]];
+
+        achievementsViewModel.UpdateAchievements(currentScore);//update achievments in the viewmodel
+
+        foreach (var achievement in achievementsViewModel.Achievements)//for each achievment in the viewmodel
         {
-            if (!achievement.IsUnlocked && score >= achievement.PointThreshold)
+            if (!achievement.IsUnlocked && currentScore >= achievement.PointThreshold)
             {
                 achievement.IsUnlocked = true;//achievment unlocked true
                 Application.Current.MainPage?.DisplayAlert("Achievement Unlocked!", $"Congratulations! You unlocked: {achievement.Title}", "OK"); //message display
@@ -289,7 +297,7 @@ public partial class GamePage : ContentPage
         }
 
         // Save the updated achievements
-        AchievementsViewModel.SaveAchievementsToFile();
+        achievementsViewModel.SaveAchievementsToFile();
     }
 
 
