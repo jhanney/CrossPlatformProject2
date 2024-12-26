@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
 
@@ -42,7 +43,11 @@ namespace CrossPlatformProject2.ViewModels
 
         private void SaveAchievementsToFile()
         {
-            throw new NotImplementedException();
+            //convert the achievements collection to JSON format
+            var json = JsonConvert.SerializeObject(Achievements);
+
+          
+            File.WriteAllText(AchievementsFilePath, json);//write to file
         }
 
         private ObservableCollection<Achievment>? LoadAchievementsFromFile()
