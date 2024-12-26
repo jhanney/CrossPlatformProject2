@@ -15,15 +15,25 @@ namespace CrossPlatformProject2.ViewModels
         public LeaderboardViewModel(Dictionary<string, int> playerScores)
         {
 
+            // Load saved scores from file if they exist
+            Scores = LoadScoresFromFile() ?? new ObservableCollection<ScoreEntry>();
 
-            Scores = new ObservableCollection<ScoreEntry>(
-               playerScores
-                   .OrderByDescending(score => score.Value)//sort score in descending order
-                   .Select(score => new ScoreEntry
-                   {
-                       playerName = score.Key,
-                       score = score.Value
-                   }));
+            // If new scores are passed, update the leaderboard
+            if (playerScores != null)
+            {
+                foreach (var score in playerScores)
+                {
+                    AddOrUpdateScore(score.Key, score.Value);
+                }
+
+                // Sort the scores in descending order after updating
+                Scores = new ObservableCollection<ScoreEntry>(
+                    Scores.OrderByDescending(s => s.score)
+                );
+
+                // Save the updated leaderboard to the file
+                SaveScoresToFile();
+            }
         }
 
         public void AddOrUpdateScore(string playerName, int score)
