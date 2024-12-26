@@ -8,15 +8,22 @@ namespace CrossPlatformProject2.ViewModels
     {
         public ObservableCollection<Achievment> Achievements { get; set; }
 
+        private static readonly string AchievementsFilePath = Path.Combine(FileSystem.AppDataDirectory, "AchievementsData.json"); //filepath for achievements
+
         public AchievementsViewModel()
         {
-            //adding placeholder achievments 
-            Achievements = new ObservableCollection<Achievment>
+            //load achievements from file or initialize with default achievements if the file doesn't exist
+            Achievements = LoadAchievementsFromFile() ?? new ObservableCollection<Achievment>
             {
                 new Achievment { Title = "First Win", Description = "Win Your First Trivia Galaxy Game!!", IsUnlocked = false },
                 new Achievment { Title = "Space Cadet", Description = "Answer 5 questions correctly", IsUnlocked = false },
                 new Achievment { Title = "Space Ranger", Description = "Answer 10 questions correctly", IsUnlocked = false }
             };
+        }
+
+        private ObservableCollection<Achievment>? LoadAchievementsFromFile()
+        {
+            throw new NotImplementedException();
         }
     }
     public class Achievment
