@@ -2,6 +2,7 @@ namespace CrossPlatformProject2;
 using CrossPlatformProject2.Models; //implement models to gamepage 
 using Newtonsoft.Json;//json desrializer
 using System.Net;
+using CrossPlatformProject2.ViewModels;
 public partial class GamePage : ContentPage
 {
     private int score;
@@ -276,7 +277,22 @@ public partial class GamePage : ContentPage
         }
     }
 
-    
+    public void CheckAndUnlockAchievements()//method to unlock acheivments 
+    {
+        foreach (var achievement in AchievementsViewModel.Achievements)//for each achievment in the viewmodel
+        {
+            if (!achievement.IsUnlocked && score >= achievement.PointThreshold)
+            {
+                achievement.IsUnlocked = true;//achievment unlocked true
+                Application.Current.MainPage?.DisplayAlert("Achievement Unlocked!", $"Congratulations! You unlocked: {achievement.Title}", "OK"); //message display
+            }
+        }
+
+        // Save the updated achievements
+        AchievementsViewModel.SaveAchievementsToFile();
+    }
+
+
 
     private async void OnSaveGameClicked(object sender, EventArgs e)
     {

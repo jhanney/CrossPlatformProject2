@@ -9,7 +9,7 @@ namespace CrossPlatformProject2.ViewModels
     {
         public ObservableCollection<Achievment> Achievements { get; set; }
 
-        private static readonly string AchievementsFilePath = Path.Combine(FileSystem.AppDataDirectory, "AchievementsData.json"); //filepath for achievements
+        public static readonly string AchievementsFilePath = Path.Combine(FileSystem.AppDataDirectory, "AchievementsData.json"); //filepath for achievements
 
         public AchievementsViewModel()
         {
@@ -41,7 +41,7 @@ namespace CrossPlatformProject2.ViewModels
             SaveAchievementsToFile();//save updated achievments 
         }
 
-        private void SaveAchievementsToFile()
+        public void SaveAchievementsToFile()
         {
             try
             {
@@ -58,7 +58,7 @@ namespace CrossPlatformProject2.ViewModels
             }
         }
 
-        private ObservableCollection<Achievment>? LoadAchievementsFromFile()
+        public ObservableCollection<Achievment>? LoadAchievementsFromFile()
         {
             try
             {
