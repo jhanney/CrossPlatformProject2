@@ -23,6 +23,28 @@ namespace CrossPlatformProject2.ViewModels
             };
         }
 
+        //update achievements dynamically based on the current score
+        public void UpdateAchievements(int currentScore)
+        {
+            //check and loop through each achievement
+            foreach (var achievement in Achievements)
+            {
+                //ff the achievement is not unlocked and the player's score meets or exceeds the threshold, unlock it
+                if (!achievement.IsUnlocked && currentScore >= achievement.PointThreshold)
+                {
+                    achievement.IsUnlocked = true; //unlock completed achievment
+                }
+            }
+
+          
+            SaveAchievementsToFile();//save updated achievments 
+        }
+
+        private void SaveAchievementsToFile()
+        {
+            throw new NotImplementedException();
+        }
+
         private ObservableCollection<Achievment>? LoadAchievementsFromFile()
         {
             throw new NotImplementedException();
