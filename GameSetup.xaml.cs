@@ -10,7 +10,7 @@ public partial class GameSetup : ContentPage
     private static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json");//file path
 
     //dictionary to map category names to IDs
-    private Dictionary<string, int> Categories { get; set; }
+    private Dictionary<string, int> Categories = new();
     public GameSetup()
 	{
 		InitializeComponent();
@@ -30,29 +30,18 @@ public partial class GameSetup : ContentPage
 
     private async void LoadCategories()
     {
-        string apiUrl = "https://opentdb.com/api.php?amount=10";
+        string apiUrl = "https://opentdb.com/api_category.php";
 
         using HttpClient client = new HttpClient();
         var response = await client.GetStringAsync(apiUrl);
 
-        // Deserialize JSON into CategoryResponse
-        var root = JsonConvert.DeserializeObject<Root>(response);
+       
+        //deserialize JSON into a dictionary
+        var categoryResponse = JsonConvert.DeserializeObject<Dictionary<string, List<TriviaCategory>>>(response);
 
 
         //extract categories
-        if (root?.results != null)
-        {
-            var uniqueCategories = root.results
-                .Select(result => result.category)
-                .Distinct() // Remove duplicates
-                .ToList();
-
-
-            foreach (  var category in uniqueCategories)
-            {
-                categoryPicker.Items.Add(category); // Populate the picker with category names
-            }
-        }
+        
     }
 
     private void OnPlayerCountChanged(object sender, EventArgs e)
@@ -120,6 +109,7 @@ public partial class GameSetup : ContentPage
         string selectedPlayers = playerPicker.SelectedItem.ToString(); 
         string selectedDifficulty = difficultyPicker.SelectedItem.ToString();
         string selectedCategory = categoryPicker.SelectedItem.ToString();
+
 
 
         //push these values to the game page for use

@@ -25,16 +25,16 @@
             <StackLayout Grid.Row="1" Spacing="10">
                 <!--<Label Text="Select Number of players:" FontSize="16" FontFamily="Orbitron-Regular" TextColor="White"></Label>-->
                 
-                <Picker x:Name="playerPicker" Title="Choose Players" TitleColor="Black" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular" SelectedIndexChanged="OnPlayerCountChanged"></Picker>
+                <Picker x:Name="playerPicker" Title="Choose Players" TitleColor="gold" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular" SelectedIndexChanged="OnPlayerCountChanged"></Picker>
             </StackLayout>
             <!--difficulty picker-->
             <StackLayout Grid.Row="2" Spacing="10">
                 <!-- <Label Text="Select Difficulty" FontSize="16" FontFamily="Orbitron-Regular" TextColor="white"></Label>-->
-                <Picker x:Name="difficultyPicker" Title="Choose Dificulty" TitleColor="black" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
+                <Picker x:Name="difficultyPicker" Title="Choose Dificulty" TitleColor="gold" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular"></Picker>
             </StackLayout>
             <!--category picker-->
             <StackLayout Grid.Row="3" Spacing="10">
-                <Picker x:Name="categoryPicker" Title="Choose Category" TitleColor="Black" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular" />
+                <Picker x:Name="categoryPicker" Title="Choose Category" TitleColor="gold" BackgroundColor="White" FontSize="16" FontFamily="Orbitron-Regular" />
             </StackLayout>
             <!--player name entry-->
             <StackLayout x:Name="playerNameEntries" Spacing="10" Grid.Row="4">
