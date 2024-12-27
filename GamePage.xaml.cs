@@ -202,6 +202,8 @@ public partial class GamePage : ContentPage
             await DisplayAlert("Error", "Main page could not be found.", "OK");
         }
 
+        CheckAndUnlockAchievements(); //check and unlock achievements after every question
+
 
         //navigate to home page
         await Navigation.PopToRootAsync();
@@ -292,7 +294,7 @@ public partial class GamePage : ContentPage
             if (!achievement.IsUnlocked && currentScore >= achievement.PointThreshold)
             {
                 achievement.IsUnlocked = true;//achievment unlocked true
-                Application.Current.MainPage?.DisplayAlert("Achievement Unlocked!", $"Congratulations! You unlocked: {achievement.Title}", "OK"); //message display
+                DisplayAlert("Achievement Unlocked!", $"Congratulations! You unlocked: {achievement.Title}", "OK"); //message display
             }
         }
 
