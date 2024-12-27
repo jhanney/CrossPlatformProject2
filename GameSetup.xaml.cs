@@ -72,13 +72,14 @@ public partial class GameSetup : ContentPage
             {
                 Placeholder = $"Enter player {i} Name",
                 BackgroundColor = Colors.White,
-                TextColor = Colors.Black,
+                TextColor = Colors.Black,               
                 FontSize = 16,
             };
             //add player entry
             playerNameEntriesList.Add(entry);
             playerNameEntries.Children.Add(entry);
         }
+
     }
 
     private async void OnStartButtonClicked_Clicked(object sender, EventArgs e)
