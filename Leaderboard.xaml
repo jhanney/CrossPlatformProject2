@@ -9,7 +9,7 @@
         
         <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
             <!--title of page-->
-            <Label Text="LEADERBOARD" FontSize="36" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="Center" FontFamily="Orbitron-Bold"></Label>
+            <Label Text="LEADERBOARD" FontSize="32" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="CenterAndExpand"  FontFamily="Orbitron-Bold"></Label>
 
             <Frame BackgroundColor="Black" BorderColor="#FFD700" CornerRadius="15" WidthRequest="400">
 
