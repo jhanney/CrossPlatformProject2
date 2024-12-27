@@ -6,7 +6,7 @@
     
     <!--creating my starry background implementing a grid-->
     <Grid>
-        <Image Source="space_stars.jpg" Aspect="Fill"></Image>
+        <Image Source="space_stars.jpg" Aspect="AspectFill"></Image>
 
         <ScrollView>
             <VerticalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
@@ -19,14 +19,14 @@
                 <!--Buttons for separate pages -->
                     <Grid Margin="10,20,10,0" ColumnSpacing="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                    <Button Text="Leaderboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16" Grid.Column="0" Padding="5" HorizontalOptions="Fill" Clicked="Leaderboard_Clicked" FontFamily="Orbitron-Regular"></Button>
-                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" Padding="5" HorizontalOptions="Fill" FontFamily="Orbitron-Regular" Clicked="Achievments_Clicked"></Button>
-                    <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" Padding="5" HorizontalOptions="Fill" FontFamily="Orbitron-Regular"></Button>
+                    <Button Text="Leaderboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16" Grid.Column="0"  HorizontalOptions="Fill" Clicked="Leaderboard_Clicked" FontFamily="Orbitron-Regular"></Button>
+                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" HorizontalOptions="Fill" FontFamily="Orbitron-Regular" Clicked="Achievments_Clicked"></Button>
+                    <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" HorizontalOptions="Fill" FontFamily="Orbitron-Regular"></Button>
                     </Grid>
                 
                
