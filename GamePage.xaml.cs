@@ -131,7 +131,11 @@ public partial class GamePage : ContentPage
             //decode html coded questions
             questionLabel.Text = WebUtility.HtmlDecode(question.Question);
 
-            
+            //reset buttons before assigning new answers
+            answerButton1.Text = string.Empty;
+            answerButton2.Text = string.Empty;
+            answerButton3.Text = string.Empty;
+            answerButton4.Text = string.Empty;
 
             //make a list with correct and incorrect answers
             var answers = question.IncorrectAnswers
