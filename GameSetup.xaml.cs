@@ -40,8 +40,28 @@ public partial class GameSetup : ContentPage
         var categoryResponse = JsonConvert.DeserializeObject<Dictionary<string, List<TriviaCategory>>>(response);
 
 
-        //extract categories
-        
+        try
+        {
+            //see if the category response is valid and contains the "trivia_categories" key
+            if (categoryResponse != null && categoryResponse.TryGetValue("trivia_categories", out var categories))
+            {
+                //iterate through each category in the response
+                foreach (var category in categories)
+                {
+                   
+                    categoryPicker.Items.Add(category.name);//add category to picker
+
+                   //map the name to the id
+                    Categories[category.name] = category.id;
+                }
+            }
+        }
+        //exceptions that occur during category loading
+        catch (Exception ex)
+        {
+            //error message to the user with the exception details
+            await DisplayAlert("Error", $"Failed to load categories: {ex.Message}", "OK");
+        }
     }
 
     private void OnPlayerCountChanged(object sender, EventArgs e)
