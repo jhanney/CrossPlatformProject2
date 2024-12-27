@@ -24,9 +24,9 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                    <Button Text="Leaderboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16" Grid.Column="0"  HorizontalOptions="Fill" Clicked="Leaderboard_Clicked" FontFamily="Orbitron-Regular"></Button>
-                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" HorizontalOptions="Fill" FontFamily="Orbitron-Regular" Clicked="Achievments_Clicked"></Button>
-                    <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" HorizontalOptions="Fill" FontFamily="Orbitron-Regular"></Button>
+                    <Button Text="Leaderboard" BackgroundColor="#8A2BE2" TextColor="White" FontSize="16"  Grid.Column="0"  HorizontalOptions="Fill" Clicked="Leaderboard_Clicked" FontFamily="Orbitron-Regular" LineBreakMode="WordWrap"></Button>
+                    <Button Text="Achievements" BackgroundColor="#FF4500" TextColor="White" FontSize="16" Grid.Column="1" HorizontalOptions="FillAndExpand" FontFamily="Orbitron-Regular" Clicked="Achievments_Clicked" LineBreakMode="WordWrap"></Button>
+                    <Button Text="Settings" BackgroundColor="#32CD32" TextColor="White" FontSize="16" Grid.Column="2" HorizontalOptions="FillAndExpand" FontFamily="Orbitron-Regular" LineBreakMode="WordWrap"></Button>
                     </Grid>
                 
                

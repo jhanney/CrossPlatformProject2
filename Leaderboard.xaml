@@ -9,16 +9,16 @@
         
         <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
             <!--title of page-->
-            <Label Text="LEADERBOARD" FontSize="32" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="CenterAndExpand"  FontFamily="Orbitron-Bold"></Label>
+            <Label Text="LEADERBOARD" FontSize="30" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="CenterAndExpand"   FontFamily="Orbitron-Bold"></Label>
 
-            <Frame BackgroundColor="Black" BorderColor="#FFD700" CornerRadius="15" WidthRequest="400">
+            <Frame BackgroundColor="Black" BorderColor="#FFD700" CornerRadius="15" WidthRequest="350"> 
 
                 <!--adding grid for score table, to improve design-->
-                <Grid ColumnSpacing="10" RowSpacing="5" Padding="10" BackgroundColor="Transparent"  WidthRequest="400" >
+                <Grid ColumnSpacing="10" RowSpacing="5" Padding="15" BackgroundColor="Transparent"  WidthRequest="400" > 
                     <!--row definition-->
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
 
                     </Grid.RowDefinitions>
 
@@ -32,8 +32,8 @@
                         </Grid.ColumnDefinitions>
 
                         <!--labels for the table-->
-                        <Label Text="Player Name" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" FontFamily="Orbitron-Bold"></Label>
-                        <Label Text="Score" Grid.Column="1" Grid.Row="0" FontSize="16" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" FontFamily="Orbitron-Bold"></Label>
+                        <Label Text="Player Name" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Gold" FontAttributes="Bold" HorizontalOptions="Center" FontFamily="Orbitron-Bold"></Label>
+                        <Label Text="Score" Grid.Column="1" Grid.Row="0" FontSize="16" TextColor="Gold" FontAttributes="Bold" HorizontalOptions="Center" FontFamily="Orbitron-Bold"></Label>
                     </Grid>
                     <!--display leader boards-->
                     <CollectionView ItemsSource="{Binding Scores}" HeightRequest="300" Grid.Row="1">
