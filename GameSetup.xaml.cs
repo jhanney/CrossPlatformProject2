@@ -8,6 +8,9 @@ public partial class GameSetup : ContentPage
     private List<Entry> playerNameEntriesList = new List<Entry>();//list to store player names
 
     private static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json");//file path
+
+    //dictionary to map category names to IDs
+    private Dictionary<string, int> Categories { get; set; }
     public GameSetup()
 	{
 		InitializeComponent();
