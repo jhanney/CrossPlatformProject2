@@ -130,10 +130,19 @@ public partial class GameSetup : ContentPage
         string selectedDifficulty = difficultyPicker.SelectedItem.ToString();
         string selectedCategory = categoryPicker.SelectedItem.ToString();
 
+        //retrieve the category ID for the selected category from the Categories dictionary
+        if (!Categories.TryGetValue(selectedCategory, out int selectedCategoryId))
+        {
+            //if the category name is not found in the dictionary, display an error message
+            await DisplayAlert("Error", "Invalid category selection.", "OK");
+
+            //exit the method since the category selection is invalid
+            return;
+        }
 
 
         //push these values to the game page for use
-        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, selectedCategory, playerNames));
+        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, selectedCategoryId, playerNames));
 
     }
 
