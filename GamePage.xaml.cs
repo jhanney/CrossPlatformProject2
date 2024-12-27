@@ -10,11 +10,11 @@ public partial class GamePage : ContentPage
     private string selectedPlayers { get; set; }//selected player
     private string selectedDifficulty { get; set; }//difficulty
     private string selectedCategory { get; set; }//category
-     private int categoryID { get; set; }
+     private int selectedCategoryID { get; set; }
 
     private List<string> playerNames { get; set; }//stores player names
 
-    private const string apiURL = "https://opentdb.com/api.php?amount=10"; //api url 
+    string apiUrl => $"https://opentdb.com/api.php?amount=10&category={selectedCategoryID}&difficulty={selectedDifficulty.ToLower()}"; //api url 
 
     private int currentPlayerIndex = 0;// keep track of current player
 
@@ -25,7 +25,7 @@ public partial class GamePage : ContentPage
     private AchievementsViewModel achievementsViewModel;// instantiate viemodel
 
 
-    public GamePage(string selectedPlayers, string selectedDifficulty, string selectedCategory, List<string> playerNames, GameState gameState = null)
+    public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, GameState gameState = null)
     {
         InitializeComponent();
 
@@ -36,7 +36,8 @@ public partial class GamePage : ContentPage
             //load from game state 
             this.selectedPlayers = gameState.SelectedPlayers; 
             this.selectedDifficulty = gameState.SelectedDifficulty;
-            this.selectedCategory = gameState.SelectedCategory;
+            //this.selectedCategory = gameState.SelectedCategory;
+            this.selectedCategoryID = gameState.selectedCategoryId;
             this.playerNames = gameState.PlayerNames;
             this.triviaQuestions = gameState.TriviaQuestions;
             this.currentQuestionIndex = gameState.CurrentQuestionIndex;
@@ -67,7 +68,7 @@ public partial class GamePage : ContentPage
 
     private async Task InitializeGameAsync()
     {
-        await LoadQuestionsFromApi(selectedCategory, selectedDifficulty);
+        await LoadQuestionsFromApi(selectedCategoryID, selectedDifficulty);
 
         if (triviaQuestions.Any())
         {
@@ -83,13 +84,15 @@ public partial class GamePage : ContentPage
     private List<QuestionModel> triviaQuestions = new List<QuestionModel>(); // Stores fetched trivia questions
                                                                              //list to hold question list
     private int currentQuestionIndex = 0; //keep track of question
-    private async Task LoadQuestionsFromApi(string selectedCategory, string selectedDifficulty)
+    private async Task LoadQuestionsFromApi(int selectedCategoryID, string selectedDifficulty)
     {
+
+
         try
         {
 
             using HttpClient client = new HttpClient();
-            var response = await client.GetStringAsync(apiURL);
+            var response = await client.GetStringAsync(apiUrl);
 
             //async request to get from api
             var root = JsonConvert.DeserializeObject<Root>(response);

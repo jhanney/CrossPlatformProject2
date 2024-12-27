@@ -11,6 +11,8 @@ namespace CrossPlatformProject2.Models
         public string SelectedDifficulty { get; set; }
         public string SelectedCategory { get; set; }
 
+        public int selectedCategoryId { get; set; }//category id
+
         public string SelectedPlayers { get; set; }//added to store selected players
         public List<string> PlayerNames { get; set; }
 

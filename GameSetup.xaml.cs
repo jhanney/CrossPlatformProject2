@@ -35,18 +35,18 @@ public partial class GameSetup : ContentPage
         using HttpClient client = new HttpClient();
         var response = await client.GetStringAsync(apiUrl);
 
-       
+
         //deserialize JSON into a dictionary
-        var categoryResponse = JsonConvert.DeserializeObject<Dictionary<string, List<TriviaCategory>>>(response);
+        var categoryResponse = JsonConvert.DeserializeObject<CategoryRoot>(response);
 
 
         try
         {
             //see if the category response is valid and contains the "trivia_categories" key
-            if (categoryResponse != null && categoryResponse.TryGetValue("trivia_categories", out var categories))
+            if (categoryResponse?.TriviaCategories != null)
             {
                 //iterate through each category in the response
-                foreach (var category in categories)
+                foreach (var category in categoryResponse.TriviaCategories)
                 {
                    
                     categoryPicker.Items.Add(category.name);//add category to picker
@@ -160,7 +160,7 @@ public partial class GameSetup : ContentPage
                 await Navigation.PushAsync(new GamePage(
                     gameState.PlayerNames.Count.ToString() + " Players", // Use number of players
                     gameState.SelectedDifficulty,
-                    gameState.SelectedCategory,
+                    gameState.selectedCategoryId,
                     gameState.PlayerNames,
                     gameState
                 ));
