@@ -3,6 +3,8 @@ using CrossPlatformProject2.Models; //implement models to gamepage
 using Newtonsoft.Json;//json desrializer
 using System.Net;
 using CrossPlatformProject2.ViewModels;
+
+
 public partial class GamePage : ContentPage
 {
     private int score;
@@ -38,7 +40,7 @@ public partial class GamePage : ContentPage
             //load from game state 
             this.selectedPlayers = gameState.SelectedPlayers; 
             this.selectedDifficulty = gameState.SelectedDifficulty;
-            //this.selectedCategory = gameState.SelectedCategory;
+            this.selectedCategory = gameState.SelectedCategory;
             this.selectedCategoryID = gameState.selectedCategoryId;
             this.playerNames = gameState.PlayerNames;
             this.triviaQuestions = gameState.TriviaQuestions;
@@ -55,6 +57,8 @@ public partial class GamePage : ContentPage
             this.selectedDifficulty = selectedDifficulty;
             this.selectedCategoryID = selectedCategoryID;   
             this.playerNames = playerNames;
+            // Set the selected category based on the ID
+            this.selectedCategory = Categories.FirstOrDefault(c => c.Value == selectedCategoryId).Key;
 
             foreach (var player in playerNames)
             {
