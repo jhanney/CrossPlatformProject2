@@ -42,13 +42,31 @@ public partial class GameSetup : ContentPage
     }
 
 
-    private async Task<List<Result>> FetchQuestionsFromApi(string apiUrl)
+    private static async Task<List<Result>> FetchQuestionsFromApi(string apiUrl)
     {
         using HttpClient client = new HttpClient(); // Initialize HttpClient for API requests
-        var response = await client.GetStringAsync(apiUrl); // Fetch response from API
-        var root = JsonConvert.DeserializeObject<Root>(response); // Deserialize JSON response into Root object
+        try
+        {
+            var response = await client.GetStringAsync(apiUrl); // Fetch response from API
 
-        return root?.results ?? new List<Result>(); // Return results or an empty list if null
+            //deserialize the response into a Root object and check if results exist
+            var root = JsonConvert.DeserializeObject<Root>(response);
+
+            if (root?.results != null && root.results.Count > 0)
+            {
+                return root.results; //return the results if found
+            }
+            else
+            {
+                Console.WriteLine("No results found or API returned an error.");
+                return new List<Result>(); //return an empty list if no results
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching questions: {ex.Message}");
+            return new List<Result>(); //return an empty list in case of error
+        }
     }
 
     private void OnPlayerCountChanged(object sender, EventArgs e)

@@ -14,7 +14,7 @@ public partial class GamePage : ContentPage
 
     private List<string> playerNames { get; set; }//stores player names
 
-    string apiUrl => $"https://opentdb.com/api.php?amount=10&category={selectedCategoryID}&difficulty={selectedDifficulty.ToLower()}"; // API URL //api url 
+    string apiUrl => $"https://opentdb.com/api.php?amount=10&category={selectedCategoryID}&difficulty={selectedDifficulty.ToLower()}&type=multiple"; // API URL //api url 
 
     private int currentPlayerIndex = 0;// keep track of current player
 
