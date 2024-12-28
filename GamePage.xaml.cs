@@ -24,8 +24,10 @@ public partial class GamePage : ContentPage
 
     private AchievementsViewModel achievementsViewModel;// instantiate viemodel
 
+   
 
-    public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, List<Result> questions, GameState gameState = null)
+
+    public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, List<Result> triviaQuestions, GameState gameState = null)
     {
         InitializeComponent();
 
@@ -81,8 +83,8 @@ public partial class GamePage : ContentPage
         }
     }
 
-    private List<QuestionModel> triviaQuestions = new List<QuestionModel>(); // Stores fetched trivia questions
-                                                                             //list to hold question list
+    private List<Result> triviaQuestions = new List<Result>(); // Stores fetched trivia questions
+                                                               //list to hold question list
     private int currentQuestionIndex = 0; //keep track of question
     private async Task LoadQuestionsFromApi(int selectedCategoryID, string selectedDifficulty)
     {

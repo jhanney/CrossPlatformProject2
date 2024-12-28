@@ -125,7 +125,7 @@ public partial class GameSetup : ContentPage
         }
 
         //create the API URL based on the selected category and difficulty
-        string apiUrl = $"https://opentdb.com/api.php?amount=10&category={selectedCategoryId}&difficulty={difficultyPicker.SelectedItem.ToString().ToLower()}&type=multiple";
+        string apiUrl = $"https://opentdb.com/api.php?amount=10&category={selectedCategoryId}&difficulty={selectedDifficulty.ToLower()}&type=multiple";
 
         //fetch questions from the trivia API
         var questions = await FetchQuestionsFromApi(apiUrl);

@@ -10,5 +10,6 @@ namespace CrossPlatformProject2.Models
         public string question { get; set; }//the question
         public string correct_answer { get; set; }//the answrer
         public List<string> incorrect_answers { get; set; }//incorrect answers
+
     }
 }
