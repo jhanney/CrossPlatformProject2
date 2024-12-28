@@ -14,7 +14,7 @@ public partial class GamePage : ContentPage
 
     private List<string> playerNames { get; set; }//stores player names
 
-    string apiUrl => $"https://opentdb.com/api.php?amount=10&category={selectedCategoryID}&difficulty={selectedDifficulty.ToLower()}"; //api url 
+    string apiUrl => $"https://opentdb.com/api.php?amount=10&category={selectedCategoryID}&difficulty={selectedDifficulty.ToLower()}"; // API URL //api url 
 
     private int currentPlayerIndex = 0;// keep track of current player
 
@@ -25,7 +25,7 @@ public partial class GamePage : ContentPage
     private AchievementsViewModel achievementsViewModel;// instantiate viemodel
 
 
-    public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, GameState gameState = null)
+    public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, List<Result> questions, GameState gameState = null)
     {
         InitializeComponent();
 
@@ -51,7 +51,7 @@ public partial class GamePage : ContentPage
             //start new game
             this.selectedPlayers = selectedPlayers;
             this.selectedDifficulty = selectedDifficulty;
-            this.selectedCategory = selectedCategory;
+            this.selectedCategoryID = selectedCategoryID;   
             this.playerNames = playerNames;
 
             foreach (var player in playerNames)

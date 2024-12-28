@@ -6,7 +6,7 @@ namespace CrossPlatformProject2.Models
     {
         public Dictionary<string, int> PlayerScores { get; set; }
         public int CurrentQuestionIndex { get; set; }
-        public List<QuestionModel> RemainingQuestions { get; set; }
+       // public List<QuestionModel> RemainingQuestions { get; set; }
         public int CurrentPlayerIndex { get; set; }
         public string SelectedDifficulty { get; set; }
         public string SelectedCategory { get; set; }
@@ -16,6 +16,6 @@ namespace CrossPlatformProject2.Models
         public string SelectedPlayers { get; set; }//added to store selected players
         public List<string> PlayerNames { get; set; }
 
-        public List<QuestionModel> TriviaQuestions { get; set; } //added to store question
+        public List<Result> TriviaQuestions { get; set; } //added to store question
     }
 }

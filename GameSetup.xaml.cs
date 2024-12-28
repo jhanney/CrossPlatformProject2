@@ -117,19 +117,21 @@ public partial class GameSetup : ContentPage
         string selectedDifficulty = difficultyPicker.SelectedItem.ToString();
         string selectedCategory = categoryPicker.SelectedItem.ToString();
 
-        //retrieve the category ID for the selected category from the Categories dictionary
+       
         if (!Categories.TryGetValue(selectedCategory, out int selectedCategoryId))
         {
-            //if the category name is not found in the dictionary, display an error message
             await DisplayAlert("Error", "Invalid category selection.", "OK");
-
-            //exit the method since the category selection is invalid
             return;
         }
 
+        //create the API URL based on the selected category and difficulty
+        string apiUrl = $"https://opentdb.com/api.php?amount=10&category={selectedCategoryId}&difficulty={difficultyPicker.SelectedItem.ToString().ToLower()}&type=multiple";
 
-        //push these values to the game page for use
-        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, selectedCategoryId, playerNames));
+        //fetch questions from the trivia API
+        var questions = await FetchQuestionsFromApi(apiUrl);
+
+        //push these values to the game page
+        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, selectedCategoryId, playerNames, questions));
 
     }
 
@@ -149,7 +151,7 @@ public partial class GameSetup : ContentPage
                     gameState.SelectedDifficulty,
                     gameState.selectedCategoryId,
                     gameState.PlayerNames,
-                    gameState
+                    gameState.TriviaQuestions 
                 ));
             }
             else
