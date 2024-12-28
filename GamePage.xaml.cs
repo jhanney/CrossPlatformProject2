@@ -82,7 +82,7 @@ public partial class GamePage : ContentPage
             await Navigation.PopToRootAsync(); //if no options available returns to main page 
         }
     }
-
+    //private List<QuestionModel> triviaQuestions = new List<QuestionModel>();
     private List<Result> triviaQuestions = new List<Result>(); // Stores fetched trivia questions
                                                                //list to hold question list
     private int currentQuestionIndex = 0; //keep track of question
@@ -101,15 +101,16 @@ public partial class GamePage : ContentPage
 
             if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
             {
-                triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
-                {
-                    //decode any html
-                    Question = WebUtility.HtmlDecode(result.question),
-                    CorrectAnswer = WebUtility.HtmlDecode(result.correct_answer),
-                    IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
-                }).ToList();
+                //triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
+                //{
+                //decode any html
+                // Question = WebUtility.HtmlDecode(result.question),
+                //CorrectAnswer = WebUtility.HtmlDecode(result.correct_answer),
+                //IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
+                //}).ToList();
+                triviaQuestions = root.results;
 
-               // DisplayQuestion();
+                // DisplayQuestion();
             }
             else //display in case of error
             {
@@ -128,12 +129,12 @@ public partial class GamePage : ContentPage
         //ensure index is within range 
         if (currentQuestionIndex < triviaQuestions.Count)
         {
-            var question = triviaQuestions[currentQuestionIndex];//retireve question object from the list
-
+            //var question = triviaQuestions[currentQuestionIndex];//retireve question object from the list
+            var question = triviaQuestions[currentQuestionIndex]; // Use List<Result>
             //check if question data is complete
-            if (string.IsNullOrWhiteSpace(question.Question) ||
-                string.IsNullOrWhiteSpace(question.CorrectAnswer) ||
-                question.IncorrectAnswers == null || question.IncorrectAnswers.Count != 3)
+            if (string.IsNullOrWhiteSpace(question.question) ||
+                string.IsNullOrWhiteSpace(question.correct_answer) ||
+                question.incorrect_answers == null || question.incorrect_answers.Count != 3)
             {
                 await DisplayAlert("Error", "Incomplete question data. Skipping to the next question.", "OK");
                 currentQuestionIndex++;
@@ -145,7 +146,7 @@ public partial class GamePage : ContentPage
             }
 
             //decode html coded questions
-            questionLabel.Text = WebUtility.HtmlDecode(question.Question);
+            questionLabel.Text = WebUtility.HtmlDecode(question.question);
 
             //reset buttons before assigning new answers
             //answerButton1.Text = string.Empty;
@@ -154,8 +155,8 @@ public partial class GamePage : ContentPage
             //answerButton4.Text = string.Empty;
 
             //make a list with correct and incorrect answers
-            var answers = question.IncorrectAnswers
-                .Concat(new[] { question.CorrectAnswer })//add correct answer
+            var answers = question.incorrect_answers
+                .Concat(new[] { question.correct_answer })//add correct answer
                 .OrderBy(_ => Guid.NewGuid())//shuffle answers
                 .ToList();//add result to list
 
@@ -248,7 +249,7 @@ public partial class GamePage : ContentPage
 
         //check if answer is correct
         //compare button text to correct answer, placeholder for now 
-        if (clickedButton.Text == currentQuestion.CorrectAnswer)
+        if (clickedButton.Text == currentQuestion.correct_answer)
         {
             //calculate points based on difficulty
             int points = selectedDifficulty switch
