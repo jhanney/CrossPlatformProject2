@@ -34,43 +34,21 @@ public partial class GameSetup : ContentPage
         difficultyPicker.Items.Add("Medium");
         difficultyPicker.Items.Add("Hard");
 
-        LoadCategories();//method to load categories from API
+        //populate category picker
+        foreach (var category in Categories.Keys)
+        {
+            categoryPicker.Items.Add(category);
+        }
     }
 
-    private async void LoadCategories()
-    {
-        string apiUrl = "https://opentdb.com/api_category.php";
 
+    private async Task<List<Result>> FetchQuestionsFromApi(string apiUrl)
+    {
         using HttpClient client = new HttpClient();
         var response = await client.GetStringAsync(apiUrl);
+        var root = JsonConvert.DeserializeObject<Root>(response);
 
-
-        //deserialize JSON into a dictionary
-        var categoryResponse = JsonConvert.DeserializeObject<CategoryRoot>(response);
-
-
-        try
-        {
-            //see if the category response is valid and contains the "trivia_categories" key
-            if (categoryResponse?.TriviaCategories != null)
-            {
-                //iterate through each category in the response
-                foreach (var category in categoryResponse.TriviaCategories)
-                {
-                   
-                    categoryPicker.Items.Add(category.name);//add category to picker
-
-                   //map the name to the id
-                    Categories[category.name] = category.id;
-                }
-            }
-        }
-        //exceptions that occur during category loading
-        catch (Exception ex)
-        {
-            //error message to the user with the exception details
-            await DisplayAlert("Error", $"Failed to load categories: {ex.Message}", "OK");
-        }
+        return root?.results ?? new List<Result>();
     }
 
     private void OnPlayerCountChanged(object sender, EventArgs e)
