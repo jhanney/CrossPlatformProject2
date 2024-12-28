@@ -128,14 +128,28 @@ public partial class GamePage : ContentPage
         {
             var question = triviaQuestions[currentQuestionIndex];//retireve question object from the list
 
+            //check if question data is complete
+            if (string.IsNullOrWhiteSpace(question.Question) ||
+                string.IsNullOrWhiteSpace(question.CorrectAnswer) ||
+                question.IncorrectAnswers == null || question.IncorrectAnswers.Count != 3)
+            {
+                await DisplayAlert("Error", "Incomplete question data. Skipping to the next question.", "OK");
+                currentQuestionIndex++;
+                if (currentQuestionIndex < triviaQuestions.Count)
+                    DisplayQuestion();
+                else
+                    await endGame();
+                return;
+            }
+
             //decode html coded questions
             questionLabel.Text = WebUtility.HtmlDecode(question.Question);
 
             //reset buttons before assigning new answers
-            answerButton1.Text = string.Empty;
-            answerButton2.Text = string.Empty;
-            answerButton3.Text = string.Empty;
-            answerButton4.Text = string.Empty;
+            //answerButton1.Text = string.Empty;
+            //answerButton2.Text = string.Empty;
+            //answerButton3.Text = string.Empty;
+            //answerButton4.Text = string.Empty;
 
             //make a list with correct and incorrect answers
             var answers = question.IncorrectAnswers
@@ -159,11 +173,11 @@ public partial class GamePage : ContentPage
             if (currentQuestionIndex < triviaQuestions.Count)
                 DisplayQuestion();
             else
-                endGame();
+              await endGame();
         }
     }
 
-    private async void endGame()
+    private async Task endGame()
     {
         //score message for end of game
         string scoresMessage = "Game Over! Here are the final scores:\n";
