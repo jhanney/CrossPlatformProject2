@@ -44,11 +44,11 @@ public partial class GameSetup : ContentPage
 
     private async Task<List<Result>> FetchQuestionsFromApi(string apiUrl)
     {
-        using HttpClient client = new HttpClient();
-        var response = await client.GetStringAsync(apiUrl);
-        var root = JsonConvert.DeserializeObject<Root>(response);
+        using HttpClient client = new HttpClient(); // Initialize HttpClient for API requests
+        var response = await client.GetStringAsync(apiUrl); // Fetch response from API
+        var root = JsonConvert.DeserializeObject<Root>(response); // Deserialize JSON response into Root object
 
-        return root?.results ?? new List<Result>();
+        return root?.results ?? new List<Result>(); // Return results or an empty list if null
     }
 
     private void OnPlayerCountChanged(object sender, EventArgs e)
