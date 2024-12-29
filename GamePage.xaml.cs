@@ -86,52 +86,32 @@ public partial class GamePage : ContentPage
     private int currentQuestionIndex = 0; //keep track of question
     private async Task LoadQuestionsFromApi(int selectedCategoryID, string selectedDifficulty)
     {
-        int desiredQuestionCount = 10;//number of valid questions needed
-        List<QuestionModel> validQuestions = new List<QuestionModel>();//list to store the valid questions
-        int attempts = 0; //counter to track number of times of retires
-        const int maxAttempts = 5; //max number of retries can be 5
 
 
         try
         {
 
-            //retry until the desired number of valid questions is retrieved or the maximum attempts
-            while (validQuestions.Count < desiredQuestionCount && attempts < maxAttempts)
+            using HttpClient client = new HttpClient();
+            var response = await client.GetStringAsync(apiUrl);
+
+            //async request to get from api
+            var root = JsonConvert.DeserializeObject<Root>(response);
+
+            if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
             {
-                attempts++; //increment the retry counter
-
-                using HttpClient client = new HttpClient();//makes an HTTP client for the API request
-                var response = await client.GetStringAsync(apiUrl);//send the request and get the response
-
-                //async request to get from api
-                var root = JsonConvert.DeserializeObject<Root>(response);
-
-                if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
+                triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
                 {
-                    //filter the results for valid questions and add them to the list
-                    var newQuestions = root.results
-                        .Where(IsQuestionValid) //use the helper function to check for valid questions
-                        .Select(result => new QuestionModel
-                        {
-                        //decode any html
-                        Question = WebUtility.HtmlDecode(result.question),
-                        CorrectAnswer = WebUtility.HtmlDecode(result.correct_answer),
-                        IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
-                    }).ToList();
+                    //decode any html
+                    Question = WebUtility.HtmlDecode(result.question),
+                    CorrectAnswer = WebUtility.HtmlDecode(result.correct_answer),
+                    IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
+                }).ToList();
 
-                    //add the valid questions from this API response to the main list
-                    validQuestions.AddRange(newQuestions);
-                }
-                //else //display in case of error
-                //{
-                //  await DisplayAlert("Error", "No questions available for the selected options.", "OK");
-                //}
-                //check if we retrieved enough valid questions
-                if (validQuestions.Count < desiredQuestionCount)
-                {
-                    //display an error if there are not enough questions after retries
-                    await DisplayAlert("Error", $"Only {validQuestions.Count} valid questions were retrieved. Please try again.", "OK");
-                }
+               // DisplayQuestion();
+            }
+            else //display in case of error
+            {
+                await DisplayAlert("Error", "No questions available for the selected options.", "OK");
             }
         }
         catch (Exception ex) //display alert if questions not loaded
@@ -139,11 +119,6 @@ public partial class GamePage : ContentPage
             await DisplayAlert("Error", $"Failed to load questions: {ex.Message}", "OK");
         }
 
-    }
-
-    private bool IsQuestionValid(Result result)
-    {
-        throw new NotImplementedException();
     }
 
     private async void DisplayQuestion()
