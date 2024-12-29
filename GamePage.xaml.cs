@@ -119,7 +119,8 @@ public partial class GamePage : ContentPage
                         IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
                     }).ToList();
 
-                    
+                    //add the valid questions from this API response to the main list
+                    validQuestions.AddRange(newQuestions);
                 }
                 else //display in case of error
                 {
