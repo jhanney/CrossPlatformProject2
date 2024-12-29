@@ -108,15 +108,18 @@ public partial class GamePage : ContentPage
 
                 if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
                 {
-                    triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
-                    {
+                    //filter the results for valid questions and add them to the list
+                    var newQuestions = root.results
+                        .Where(IsQuestionValid) //use the helper function to check for valid questions
+                        .Select(result => new QuestionModel
+                        {
                         //decode any html
                         Question = WebUtility.HtmlDecode(result.question),
                         CorrectAnswer = WebUtility.HtmlDecode(result.correct_answer),
                         IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
                     }).ToList();
 
-                    // DisplayQuestion();
+                    
                 }
                 else //display in case of error
                 {
@@ -129,6 +132,11 @@ public partial class GamePage : ContentPage
             await DisplayAlert("Error", $"Failed to load questions: {ex.Message}", "OK");
         }
 
+    }
+
+    private bool IsQuestionValid(Result result)
+    {
+        throw new NotImplementedException();
     }
 
     private async void DisplayQuestion()
