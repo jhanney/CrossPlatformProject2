@@ -51,7 +51,7 @@ public partial class GamePage : ContentPage
             //start new game
             this.selectedPlayers = selectedPlayers;
             this.selectedDifficulty = selectedDifficulty;
-            this.selectedCategory = selectedCategory;
+            this.selectedCategoryID = selectedCategoryID; 
             this.playerNames = playerNames;
 
             foreach (var player in playerNames)
@@ -86,8 +86,8 @@ public partial class GamePage : ContentPage
     private int currentQuestionIndex = 0; //keep track of question
     private async Task LoadQuestionsFromApi(int selectedCategoryID, string selectedDifficulty)
     {
-
-
+        int desiredQuestionCount = 10;//number of valid questions needed
+        List<QuestionModel> validQuestions = new List<QuestionModel>();//list to store the valid questions
         try
         {
 
