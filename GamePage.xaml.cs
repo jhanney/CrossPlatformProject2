@@ -122,9 +122,15 @@ public partial class GamePage : ContentPage
                     //add the valid questions from this API response to the main list
                     validQuestions.AddRange(newQuestions);
                 }
-                else //display in case of error
+                //else //display in case of error
+                //{
+                //  await DisplayAlert("Error", "No questions available for the selected options.", "OK");
+                //}
+                //check if we retrieved enough valid questions
+                if (validQuestions.Count < desiredQuestionCount)
                 {
-                    await DisplayAlert("Error", "No questions available for the selected options.", "OK");
+                    //display an error if there are not enough questions after retries
+                    await DisplayAlert("Error", $"Only {validQuestions.Count} valid questions were retrieved. Please try again.", "OK");
                 }
             }
         }
