@@ -16,6 +16,6 @@ namespace CrossPlatformProject2.Models
         public string SelectedPlayers { get; set; }//added to store selected players
         public List<string> PlayerNames { get; set; }
 
-        public List<Result> TriviaQuestions { get; set; } //added to store question
+        public List<QuestionModel> TriviaQuestions { get; set; } //added to store question 
     }
 }

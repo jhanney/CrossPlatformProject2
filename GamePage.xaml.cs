@@ -3,8 +3,6 @@ using CrossPlatformProject2.Models; //implement models to gamepage
 using Newtonsoft.Json;//json desrializer
 using System.Net;
 using CrossPlatformProject2.ViewModels;
-
-
 public partial class GamePage : ContentPage
 {
     private int score;
@@ -16,7 +14,7 @@ public partial class GamePage : ContentPage
 
     private List<string> playerNames { get; set; }//stores player names
 
-    string apiUrl => $"https://opentdb.com/api.php?amount=10&category={selectedCategoryID}&difficulty={selectedDifficulty.ToLower()}&type=multiple"; // API URL //api url 
+    string apiUrl => $"https://opentdb.com/api.php?amount=10&category={selectedCategoryID}&difficulty={selectedDifficulty.ToLower()}"; //api url 
 
     private int currentPlayerIndex = 0;// keep track of current player
 
@@ -26,10 +24,8 @@ public partial class GamePage : ContentPage
 
     private AchievementsViewModel achievementsViewModel;// instantiate viemodel
 
-   
 
-
-    public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, List<Result> triviaQuestions, GameState gameState = null)
+    public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, GameState gameState = null)
     {
         InitializeComponent();
 
@@ -40,7 +36,7 @@ public partial class GamePage : ContentPage
             //load from game state 
             this.selectedPlayers = gameState.SelectedPlayers; 
             this.selectedDifficulty = gameState.SelectedDifficulty;
-            this.selectedCategory = gameState.SelectedCategory;
+            //this.selectedCategory = gameState.SelectedCategory;
             this.selectedCategoryID = gameState.selectedCategoryId;
             this.playerNames = gameState.PlayerNames;
             this.triviaQuestions = gameState.TriviaQuestions;
@@ -55,10 +51,8 @@ public partial class GamePage : ContentPage
             //start new game
             this.selectedPlayers = selectedPlayers;
             this.selectedDifficulty = selectedDifficulty;
-            this.selectedCategoryID = selectedCategoryID;   
+            this.selectedCategory = selectedCategory;
             this.playerNames = playerNames;
-            // Set the selected category based on the ID
-            this.selectedCategory = Categories.FirstOrDefault(c => c.Value == selectedCategoryId).Key;
 
             foreach (var player in playerNames)
             {
@@ -86,9 +80,9 @@ public partial class GamePage : ContentPage
             await Navigation.PopToRootAsync(); //if no options available returns to main page 
         }
     }
-    //private List<QuestionModel> triviaQuestions = new List<QuestionModel>();
-    private List<Result> triviaQuestions = new List<Result>(); // Stores fetched trivia questions
-                                                               //list to hold question list
+
+    private List<QuestionModel> triviaQuestions = new List<QuestionModel>(); // Stores fetched trivia questions
+                                                                             //list to hold question list
     private int currentQuestionIndex = 0; //keep track of question
     private async Task LoadQuestionsFromApi(int selectedCategoryID, string selectedDifficulty)
     {
@@ -105,16 +99,15 @@ public partial class GamePage : ContentPage
 
             if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
             {
-                //triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
-                //{
-                //decode any html
-                // Question = WebUtility.HtmlDecode(result.question),
-                //CorrectAnswer = WebUtility.HtmlDecode(result.correct_answer),
-                //IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
-                //}).ToList();
-                triviaQuestions = root.results;
+                triviaQuestions = root.results.Select(result => new QuestionModel //populate trivia questions list with data from API
+                {
+                    //decode any html
+                    Question = WebUtility.HtmlDecode(result.question),
+                    CorrectAnswer = WebUtility.HtmlDecode(result.correct_answer),
+                    IncorrectAnswers = result.incorrect_answers.Select(WebUtility.HtmlDecode).ToList()
+                }).ToList();
 
-                // DisplayQuestion();
+               // DisplayQuestion();
             }
             else //display in case of error
             {
@@ -133,12 +126,12 @@ public partial class GamePage : ContentPage
         //ensure index is within range 
         if (currentQuestionIndex < triviaQuestions.Count)
         {
-            //var question = triviaQuestions[currentQuestionIndex];//retireve question object from the list
-            var question = triviaQuestions[currentQuestionIndex]; // Use List<Result>
+            var question = triviaQuestions[currentQuestionIndex];//retireve question object from the list
+
             //check if question data is complete
-            if (string.IsNullOrWhiteSpace(question.question) ||
-                string.IsNullOrWhiteSpace(question.correct_answer) ||
-                question.incorrect_answers == null || question.incorrect_answers.Count != 3)
+            if (string.IsNullOrWhiteSpace(question.Question) ||
+                string.IsNullOrWhiteSpace(question.CorrectAnswer) ||
+                question.IncorrectAnswers == null || question.IncorrectAnswers.Count != 3)
             {
                 await DisplayAlert("Error", "Incomplete question data. Skipping to the next question.", "OK");
                 currentQuestionIndex++;
@@ -150,7 +143,7 @@ public partial class GamePage : ContentPage
             }
 
             //decode html coded questions
-            questionLabel.Text = WebUtility.HtmlDecode(question.question);
+            questionLabel.Text = WebUtility.HtmlDecode(question.Question);
 
             //reset buttons before assigning new answers
             //answerButton1.Text = string.Empty;
@@ -159,8 +152,8 @@ public partial class GamePage : ContentPage
             //answerButton4.Text = string.Empty;
 
             //make a list with correct and incorrect answers
-            var answers = question.incorrect_answers
-                .Concat(new[] { question.correct_answer })//add correct answer
+            var answers = question.IncorrectAnswers
+                .Concat(new[] { question.CorrectAnswer })//add correct answer
                 .OrderBy(_ => Guid.NewGuid())//shuffle answers
                 .ToList();//add result to list
 
@@ -253,7 +246,7 @@ public partial class GamePage : ContentPage
 
         //check if answer is correct
         //compare button text to correct answer, placeholder for now 
-        if (clickedButton.Text == currentQuestion.correct_answer)
+        if (clickedButton.Text == currentQuestion.CorrectAnswer)
         {
             //calculate points based on difficulty
             int points = selectedDifficulty switch

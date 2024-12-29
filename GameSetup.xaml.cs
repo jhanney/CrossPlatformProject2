@@ -8,18 +8,11 @@ public partial class GameSetup : ContentPage
     private List<Entry> playerNameEntriesList = new List<Entry>();//list to store player names
 
     private static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json");//file path
+    private Dictionary<string, int> Categories = new();
+
 
     //dictionary to map category names to IDs
-    private Dictionary<string, int> Categories = new Dictionary<string, int>
-    {
-        { "General Knowledge", 9 },
-        { "Science and Nature", 17 },
-        { "Entertainment: Video Games", 15 },
-        { "Entertainment: Film", 11 },
-        { "Music", 12 },
-        { "Books", 10 },
-        { "Art", 25 }
-    }; 
+
     public GameSetup()
 	{
 		InitializeComponent();
@@ -35,37 +28,40 @@ public partial class GameSetup : ContentPage
         difficultyPicker.Items.Add("Hard");
 
         //populate category picker
-        foreach (var category in Categories.Keys)
-        {
-            categoryPicker.Items.Add(category);
-        }
+        LoadCategories();
     }
 
 
-    private static async Task<List<Result>> FetchQuestionsFromApi(string apiUrl)
+    private async void LoadCategories()
     {
-        using HttpClient client = new HttpClient(); // Initialize HttpClient for API requests
+        string apiUrl = "https://opentdb.com/api_category.php";
+
+        using HttpClient client = new HttpClient();
         try
         {
-            var response = await client.GetStringAsync(apiUrl); // Fetch response from API
+            var response = await client.GetStringAsync(apiUrl);
 
-            //deserialize the response into a Root object and check if results exist
-            var root = JsonConvert.DeserializeObject<Root>(response);
+            //deserialize JSON into a dictionary
+            var categoryResponse = JsonConvert.DeserializeObject<CategoryRoot>(response);
 
-            if (root?.results != null && root.results.Count > 0)
+            //validate category response and populate picker
+            if (categoryResponse != null && categoryResponse.TriviaCategories != null)
             {
-                return root.results; //return the results if found
+                foreach (var category in categoryResponse.TriviaCategories)
+                {
+                    categoryPicker.Items.Add(category.name); //add category to picker
+                    Categories[category.name] = category.id; //map category name to ID
+                }
             }
             else
             {
-                Console.WriteLine("No results found or API returned an error.");
-                return new List<Result>(); //return an empty list if no results
+                await DisplayAlert("Error", "Failed to load categories from the API.", "OK");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error fetching questions: {ex.Message}");
-            return new List<Result>(); //return an empty list in case of error
+            //handle exceptions during category loading
+            await DisplayAlert("Error", $"Failed to load categories: {ex.Message}", "OK");
         }
     }
 
@@ -101,56 +97,41 @@ public partial class GameSetup : ContentPage
 
     private async void OnStartButtonClicked_Clicked(object sender, EventArgs e)
     {
-        if (playerPicker.SelectedItem == null)//method to validate player picker selection
+        if (playerPicker.SelectedItem == null)
         {
-            //display alert
             await DisplayAlert("Error", "Please select the number of players.", "OK");
-            return; 
+            return;
         }
 
-        if (difficultyPicker.SelectedItem == null)//method to check if difficulty selected
+        if (difficultyPicker.SelectedItem == null)
         {
-
-            //display alert
             await DisplayAlert("Error", "Please select the difficulty.", "OK");
             return;
         }
 
-        //get the player names from the entry fiels
         var playerNames = playerNameEntriesList
-                //ensures only non empty fields
-                .Where(entry => !string.IsNullOrWhiteSpace(entry.Text))//takes the player names
-                .Select(entry => entry.Text)
-                .ToList();//adds to list
+            .Where(entry => !string.IsNullOrWhiteSpace(entry.Text))
+            .Select(entry => entry.Text)
+            .ToList();
 
-        //checks if number of players matches names filled
         if (playerNames.Count != playerPicker.SelectedIndex + 1)
         {
-            await DisplayAlert("Error", "Please fill in all player names.", "OK");//displays if not
+            await DisplayAlert("Error", "Please fill in all player names.", "OK");
             return;
         }
 
-        //conver items to strings, will be used in game session
-        string selectedPlayers = playerPicker.SelectedItem.ToString(); 
+        string selectedPlayers = playerPicker.SelectedItem.ToString();
         string selectedDifficulty = difficultyPicker.SelectedItem.ToString();
-        string selectedCategory = categoryPicker.SelectedItem.ToString();
+        string selectedCategory = categoryPicker.SelectedItem?.ToString();
 
-       
-        if (!Categories.TryGetValue(selectedCategory, out int selectedCategoryId))
+        if (string.IsNullOrEmpty(selectedCategory) || !Categories.TryGetValue(selectedCategory, out int selectedCategoryId))
         {
             await DisplayAlert("Error", "Invalid category selection.", "OK");
             return;
         }
 
-        //create the API URL based on the selected category and difficulty
-        string apiUrl = $"https://opentdb.com/api.php?amount=10&category={selectedCategoryId}&difficulty={selectedDifficulty.ToLower()}&type=multiple";
-
-        //fetch questions from the trivia API
-        var questions = await FetchQuestionsFromApi(apiUrl);
-
-        //push these values to the game page
-        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, selectedCategoryId, playerNames, questions));
-
+        // Push these values to the GamePage for use
+        await Navigation.PushAsync(new GamePage(selectedPlayers, selectedDifficulty, selectedCategoryId, playerNames));
     }
 
     private async Task LoadGameFromFile()
@@ -168,8 +149,8 @@ public partial class GameSetup : ContentPage
                     gameState.PlayerNames.Count.ToString() + " Players", // Use number of players
                     gameState.SelectedDifficulty,
                     gameState.selectedCategoryId,
-                    gameState.PlayerNames,
-                    gameState.TriviaQuestions 
+                    gameState.PlayerNames
+                    //gameState.TriviaQuestions 
                 ));
             }
             else
