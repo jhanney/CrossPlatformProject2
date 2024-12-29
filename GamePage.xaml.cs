@@ -95,15 +95,16 @@ public partial class GamePage : ContentPage
         try
         {
 
-            using HttpClient client = new HttpClient();
-            var response = await client.GetStringAsync(apiUrl);
-
-            //async request to get from api
-            var root = JsonConvert.DeserializeObject<Root>(response);
-
             //retry until the desired number of valid questions is retrieved or the maximum attempts
             while (validQuestions.Count < desiredQuestionCount && attempts < maxAttempts)
-                {
+            {
+                attempts++; //increment the retry counter
+
+                using HttpClient client = new HttpClient();//makes an HTTP client for the API request
+                var response = await client.GetStringAsync(apiUrl);//send the request and get the response
+
+                //async request to get from api
+                var root = JsonConvert.DeserializeObject<Root>(response);
 
                 if (root?.response_code == 0 && root.results?.Count > 0)//ensures root and properties not null
                 {
