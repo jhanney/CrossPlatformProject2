@@ -139,6 +139,44 @@ public partial class GamePage : ContentPage
         isTimerRunning = true; //set timer state to running
     }
 
+    // Stops the timer if it is currently running
+    private void StopTimer()
+    {
+        if (isTimerRunning)
+        {
+            questionTimer.Stop(); // Stop the timer
+            isTimerRunning = false; // Update the timer state
+        }
+    }
+
+    // Handles the event when time runs out for the current player
+    private async void TimeUp()
+    {
+        // Stop the timer to prevent further updates
+        StopTimer();
+
+        // Notify the user that the current player's time has run out
+        await DisplayAlert("Time's Up!", $"{playerNames[currentPlayerIndex]}'s time has run out!", "OK");
+
+        // Move to the next player in a circular fashion
+        currentPlayerIndex = (currentPlayerIndex + 1) % playerNames.Count;
+
+        // Move to the next question
+        currentQuestionIndex++;
+
+        // Check if there are more questions to display
+        if (currentQuestionIndex < triviaQuestions.Count)
+        {
+            DisplayQuestion(); // Display the next question
+        }
+        else
+        {
+            // End the game if there are no more questions
+            await endGame();
+        }
+    }
+
+
 
     private async Task InitializeGameAsync()
     {
@@ -197,6 +235,7 @@ public partial class GamePage : ContentPage
 
     private async void DisplayQuestion()
     {
+        StopTimer();
         //ensure index is within range 
         if (currentQuestionIndex < triviaQuestions.Count)
         {
@@ -238,6 +277,7 @@ public partial class GamePage : ContentPage
                 answerButton2.Text = answers[1];
                 answerButton3.Text = answers[2];
                 answerButton4.Text = answers[3];
+                StartTimer();
             }
         }
         else
@@ -253,6 +293,7 @@ public partial class GamePage : ContentPage
 
     private async Task endGame()
     {
+        StopTimer();
         //score message for end of game
         string scoresMessage = "Game Over! Here are the final scores:\n";
 
@@ -306,6 +347,7 @@ public partial class GamePage : ContentPage
 
     private void OnAnswerClicked(object sender, EventArgs e)
     {
+        StopTimer();
         //idnetify which button was clickedd
         Button clickedButton = sender as Button;//sender is the button that was clicked
         //cast sender to button, to access its properties
