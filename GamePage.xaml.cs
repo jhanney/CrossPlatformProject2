@@ -23,12 +23,20 @@ public partial class GamePage : ContentPage
     public static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "SavedGame.json"); //file path
 
     private AchievementsViewModel achievementsViewModel;// instantiate viemodel
+                                                        
+    private IDispatcherTimer questionTimer;//timer to handle question time limits and countdown functionality
+
+    //tracks the remaining time for the current question
+    private int timeRemaining;
+
+    //indicates whether the timer is currently running
+    private bool isTimerRunning;
 
 
     public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, GameState gameState = null)
     {
         InitializeComponent();
-
+        //InitializeTimer();
         achievementsViewModel = new AchievementsViewModel();
 
         if (gameState != null)
@@ -49,9 +57,9 @@ public partial class GamePage : ContentPage
         else
         {
             //start new game
+            this.selectedCategoryID = selectedCategoryId;
             this.selectedPlayers = selectedPlayers;
             this.selectedDifficulty = selectedDifficulty;
-            this.selectedCategoryID = selectedCategoryID; 
             this.playerNames = playerNames;
 
             foreach (var player in playerNames)
