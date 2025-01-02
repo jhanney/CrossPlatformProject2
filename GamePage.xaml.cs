@@ -246,7 +246,7 @@ public partial class GamePage : ContentPage
                 string.IsNullOrWhiteSpace(question.CorrectAnswer) ||
                 question.IncorrectAnswers == null || question.IncorrectAnswers.Count != 3)
             {
-                await DisplayAlert("Error", "Incomplete question data. Skipping to the next question.", "OK");
+                //await DisplayAlert("Error", "Incomplete question data. Skipping to the next question.", "OK");
                 currentQuestionIndex++;
                 if (currentQuestionIndex < triviaQuestions.Count)
                     DisplayQuestion();
