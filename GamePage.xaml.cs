@@ -117,6 +117,28 @@ public partial class GamePage : ContentPage
         }
     }
 
+    private void StartTimer()
+    {
+        //disable the timer for "Easy" difficulty
+        if (selectedDifficulty == "Easy")
+        {
+            timerLabel.IsVisible = false; //hide the timer label
+            return; //exit the method as no timer is needed
+        }
+
+        //set the initial time based on the selected difficulty
+        timeRemaining = selectedDifficulty == "Medium" ? 20 : 15; //20 seconds for Medium, 15 seconds for Hard
+
+        //set the timer label properties
+        timerLabel.TextColor = Colors.Gold; //default text color
+        timerLabel.IsVisible = true; //ake the timer label visible
+        timerLabel.Text = $"Time Remaining: {timeRemaining}s"; //display the initial time
+
+        //start timer
+        questionTimer.Start();
+        isTimerRunning = true; //set timer state to running
+    }
+
 
     private async Task InitializeGameAsync()
     {
