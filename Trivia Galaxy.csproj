@@ -23,7 +23,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>CrossPlatformProject2</ApplicationTitle>
+		<ApplicationTitle>Trivia Galaxy</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.crossplatformproject2</ApplicationId>
