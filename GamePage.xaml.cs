@@ -149,29 +149,27 @@ public partial class GamePage : ContentPage
         }
     }
 
-    // Handles the event when time runs out for the current player
+    //handles the event when time runs out for the current player
     private async void TimeUp()
     {
-        // Stop the timer to prevent further updates
+        //stop the timer to prevent further updates
         StopTimer();
 
-        // Notify the user that the current player's time has run out
-        await DisplayAlert("Time's Up!", $"{playerNames[currentPlayerIndex]}'s time has run out!", "OK");
+        await DisplayAlert("Time's Up!", $"{playerNames[currentPlayerIndex]}'s time has run out!", "OK"); //notify the user that the current player's time has run out
 
-        // Move to the next player in a circular fashion
+        //move to the next player in a circular fashion
         currentPlayerIndex = (currentPlayerIndex + 1) % playerNames.Count;
 
-        // Move to the next question
-        currentQuestionIndex++;
+        currentQuestionIndex++;//move to the next question
 
-        // Check if there are more questions to display
+        //check if there are more questions to display
         if (currentQuestionIndex < triviaQuestions.Count)
         {
-            DisplayQuestion(); // Display the next question
+            DisplayQuestion(); //display the next question
         }
         else
         {
-            // End the game if there are no more questions
+            //end the game if there are no more questions
             await endGame();
         }
     }
