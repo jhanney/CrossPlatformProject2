@@ -36,7 +36,7 @@ public partial class GamePage : ContentPage
     public GamePage(string selectedPlayers, string selectedDifficulty, int selectedCategoryId, List<string> playerNames, GameState gameState = null)
     {
         InitializeComponent();
-        //InitializeTimer();
+        InitializeTimer();
         achievementsViewModel = new AchievementsViewModel();
 
         if (gameState != null)
@@ -73,6 +73,50 @@ public partial class GamePage : ContentPage
         }
 
     }
+
+    //override the Ondisappearing method to ensure the timer stops when the page is no longer visible
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        StopTimer(); //stops the timer to avoid unintended behavior
+    }
+
+    // Initializes the timer for question countdown
+    private void InitializeTimer()
+    {
+        //create a timer using the application's dispatcher
+        questionTimer = Application.Current.Dispatcher.CreateTimer();
+
+        //set the timer interval to 1 second
+        questionTimer.Interval = TimeSpan.FromSeconds(1);
+
+        //attach the Tick event handler for timer functionality
+        questionTimer.Tick += Timer_Tick;
+    }
+
+    private void Timer_Tick(object sender, EventArgs e)
+    {
+        //see if there is remaining time
+        if (timeRemaining > 0)
+        {
+            timeRemaining--;//deincrement the remaining time by 1 second
+
+            //update the timer label to show the remaining time
+            timerLabel.Text = $"Time Remaining: {timeRemaining}s";
+
+            // text color to red if time is less than or equal to 5 seconds
+            if (timeRemaining <= 5)
+            {
+                timerLabel.TextColor = Colors.Red;
+            }
+        }
+        else
+        {
+            //call the TimeUp method when time runs out
+            TimeUp();
+        }
+    }
+
 
     private async Task InitializeGameAsync()
     {
